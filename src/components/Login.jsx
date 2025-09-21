@@ -1,20 +1,16 @@
 import { useState, useEffect } from "react";
 import client from "../api/client";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import "./Forms.css";
+import { Stack, TextField, Typography, Button, IconButton, InputAdornment  } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function LoginForm() {
-    const {isAuthenticated, authReady, login} = useAuth();
+    const {login} = useAuth();
     const [form, setForm] = useState({email:'', password:''});
     const [error, setError] = useState('');
-    const navigate = useNavigate();
-
-    useEffect(() => {
-    if (authReady && isAuthenticated) {
-      navigate("/properties", { replace: true });
-    }
-    }, [authReady, isAuthenticated, navigate]);
+    const [show, setShow] = useState(false);
+    
+    const toggle = () => setShow(s => !s);
 
     const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,22 +23,31 @@ export default function LoginForm() {
     };
 
     return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-      />
-      <button type="submit">Войти</button>
-      {error && <p style={{color:"red"}}>{error}</p>}
-    </form>
+    <Stack component="form" spacing={2} onSubmit={handleSubmit}>
+      <TextField label="Email" type="email" value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })} required />
+      <TextField label="Пароль" type={show ? "text" : "password"} value={form.password}
+            onChange={e => setForm({ ...form, password: e.target.value })} required 
+              slotProps={{
+              input: {
+              endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                onClick={toggle}
+                onMouseDown={(e) => e.preventDefault()} // чтобы не терять фокус
+                edge="end"
+                aria-label={show ? "Скрыть пароль" : "Показать пароль"}
+              >
+                {show ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+            ),
+            },
+            }}
+            />
+      {error && <Typography color="error">{error}</Typography>}
+      <Button type="submit" variant="contained" fullWidth>Login</Button>
+    </Stack>
     );
         
 }

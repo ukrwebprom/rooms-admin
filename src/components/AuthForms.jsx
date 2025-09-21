@@ -1,31 +1,49 @@
 import { useState } from "react";
 import LoginForm from "./Login";
 import RegisterForm from "./Register";
-import './AuthForms.css';
+import { Paper, Typography, Link } from "@mui/material";
 
 export default function AuthForm() {
     const [action, setAction] = useState('Login');
 
     return (
-        <div className="base">
+        <Paper sx={{ p: 4, width: 380 }}>
 
         
         {action === 'Login' ? 
         (
             <>
-            <h1>Login</h1>
+            <Typography variant="h5" mb={2}>Login</Typography>
             <LoginForm />
-            <p onClick={() => setAction('Register')} className='switchForm'>I don't have an account yet</p>
+            <Typography variant="body2" mt={2}>I don't have an account yet{" "}
+                <Link
+                    component="button"
+                    type="button"
+                    onClick={() => setAction("Register")}
+                    underline="hover"
+                    >
+                    Sign Up
+                </Link>
+            </Typography>
             </>
         ):
         (
             <>
-            <h1>Register</h1>
+            <Typography variant="h5" mb={2}>Sign Up</Typography>
             <RegisterForm />
-            <p onClick={() => setAction('Login')} className='switchForm'>I already have an account</p>
+            <Typography variant="body2" mt={2}>I already have an account{" "}
+                <Link
+                    component="button"
+                    type="button"
+                    onClick={() => setAction("Login")}
+                    underline="hover"
+                    >
+                    Login
+                </Link>
+            </Typography>
             </>
         )}
 
-        </div>
+        </Paper>
     )
 }

@@ -1,20 +1,44 @@
-import "./Navbar.css"; // стили
+import { useState } from "react";
 import logo from "../assets/rooms.svg";
-import { AuthProvider, useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import { AppBar, Toolbar, Typography, Button, IconButton, Box, Avatar, Menu, MenuItem } from "@mui/material";
 
 function Navbar() {
     const {user, logout, isAuthenticated} = useAuth();
+    const [anchorEl, setAnchorEl] = useState(null);
     console.log('isAuthenticated navbar', isAuthenticated);
+
+    const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
+    const handleCloseMenu = () => setAnchorEl(null);
   return (
-    <header className="navbar">
-        <img src={logo} alt="ROOMS" className="navbar__logo"/>
-        {isAuthenticated &&
-        <nav className="navbar__links">
-            <p>{user.name}</p>
-            <p onClick={logout}>Logout</p>
-        </nav>
-        }
-    </header>
+    <AppBar position="static" sx={{ bgcolor: "#fff", color: "#333" }}>
+      <Toolbar>
+        <Box
+            component="img"
+            src={logo}
+            alt="Rooms Admin"
+            sx={{ height: 32 }}
+          />
+        <Box sx={{ flexGrow: 1 }} />
+        <IconButton  onClick={handleOpenMenu} sx={{ ml: 2 }}>
+          <Avatar alt={user?.name} src={user?.avatarUrl || ""} />
+        </IconButton>
+
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}
+
+        >
+              <MenuItem onClick={handleCloseMenu}>Профиль</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleCloseMenu();
+                  logout();
+                }}
+              >
+                Выйти
+              </MenuItem>
+        </Menu>
+      </Toolbar>
+    </AppBar>
   );
 }
 
