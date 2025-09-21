@@ -11,7 +11,7 @@ function Navbar() {
     const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
     const handleCloseMenu = () => setAnchorEl(null);
   return (
-    <AppBar position="static" sx={{ bgcolor: "#fff", color: "#333" }}>
+    <AppBar position="static" sx={{ bgcolor: "#fff", color: "#333", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         <Box
             component="img"

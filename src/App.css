@@ -5,17 +5,17 @@
   box-sizing: border-box;
 }
 
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-}
+} */
 
-.mainarea {
+/* .mainarea {
   flex-grow: 1;
   display:flex;
   justify-content: center;
   align-items: center;
-}
+} */
 

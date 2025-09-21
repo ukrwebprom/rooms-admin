@@ -9,6 +9,8 @@ import Blank from './layouts/Blank';
 import AppShell from './layouts/AppShell';
 import ProtectedRoute from "./components/ProtectedRoute";
 import PropertiesList from './components/PropertiesList';
+import PropertyForm from './components/PropertyForm';
+import Rooms from './components/Rooms';
 
 function App() {
 
@@ -27,6 +29,9 @@ function App() {
         
         <Route element={<ProtectedRoute><AppShell/></ProtectedRoute>}>
           <Route path="/properties" element={<PropertiesList/>} />
+          <Route path="/properties/new" element={<PropertyForm mode="create" />} />
+          <Route path="/properties/:id/edit" element={<PropertyForm mode="edit" />} />
+          <Route path="/rooms" element={<Rooms/>} />
         </Route>
 
         <Route path="/" 
