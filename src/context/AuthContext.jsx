@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
       if (data.token) setToken(data.token); // Bearer-вариант
       setSession(newSession);
       localStorage.setItem("auth:session", JSON.stringify(newSession));
-
+      console.log(newSession);
       return { ok: true };
     } catch (e) {
       setError(e.response?.data?.error || e.message);
