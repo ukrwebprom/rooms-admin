@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (!token) {
       setAuthReady(true); // токена нет — заканчиваем инициализацию
       return;
@@ -30,8 +31,10 @@ export function AuthProvider({ children }) {
     (async () => {
       try {
         const res = await client.get("/auth/profile"); // проверяем токен на сервере
+        console.log('res', res);
         setUser(res.data.user);
       } catch {
+        console.log('error');
         localStorage.removeItem("token");
         setUser(null);
       } finally {
@@ -40,17 +43,13 @@ export function AuthProvider({ children }) {
     })();
   }, []);
 
-  // const login = (userData) => {
-  //   setUser(userData.user);
-  //   localStorage.setItem("token", userData.token);
-  // }
 
   const login = async ({ email, password }) => {
     setLoading(true); setError(null);
     
     try {
-      // const { data } = await client.post("/auth/login", { email, password });
-      const { data } = await client.get("/auth2/test-login", { email, password });
+      const { data } = await client.post("/auth/login", { email, password });
+      // const { data } = await client.get("/auth2/test-login", { email, password });
       
       // сервер возвращает: user, abilities, scopes, currentPropertyId, token?
       const newSession = {
@@ -63,6 +62,7 @@ export function AuthProvider({ children }) {
       if (data.token) setToken(data.token); // Bearer-вариант
       setSession(newSession);
       localStorage.setItem("auth:session", JSON.stringify(newSession));
+      setAuthReady(true);
       console.log(newSession);
       return { ok: true };
     } catch (e) {
@@ -74,7 +74,7 @@ export function AuthProvider({ children }) {
   }
 
   const logout = () => {
-    setUser(null);
+    setSession(null);
     localStorage.removeItem("token");
   }
 
@@ -84,6 +84,8 @@ export function AuthProvider({ children }) {
     localStorage.setItem("auth:session", JSON.stringify(updated));
   };
 
+  const isAuthenticated = !!session?.user;
+
   const value = useMemo(() => ({
     user: session?.user || null,
     abilities: session?.abilities || [],
@@ -91,6 +93,7 @@ export function AuthProvider({ children }) {
     currentPropertyId: session?.currentPropertyId || null,
     loading, error,
     login, logout, setCurrentPropertyId,
+    isAuthenticated, authReady
   }), [session, loading, error]);
 
   // const value = { user, login, logout, authReady, isAuthenticated: !!user };
