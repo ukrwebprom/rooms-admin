@@ -6,7 +6,6 @@ import { AppBar, Toolbar, Typography, Button, IconButton, Box, Avatar, Menu, Men
 function Navbar() {
     const {user, logout, isAuthenticated} = useAuth();
     const [anchorEl, setAnchorEl] = useState(null);
-    console.log('isAuthenticated navbar', isAuthenticated);
 
     const handleOpenMenu = (event) => setAnchorEl(event.currentTarget);
     const handleCloseMenu = () => setAnchorEl(null);

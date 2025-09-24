@@ -65,7 +65,7 @@ export function AuthProvider({ children }) {
       const newSession = {
         user: data.user,
         abilities: data.abilities || [],
-        scopes: data.scopes || {},
+        properties: data.properties || [],
         currentPropertyId: data.currentPropertyId || null,
       };
 
@@ -75,15 +75,19 @@ export function AuthProvider({ children }) {
       setAuthReady(true);
       console.log(newSession);
       return { ok: true };
+
     } catch (e) {
       setError(e.response?.data?.error || e.message);
       return { ok: false, error: e.message };
+
     } finally {
       setLoading(false);
     }
   }
 
-  const logout = () => {
+  const logout = async() => {
+    const { killtoken } = await client.post("/auth/logout");
+    console.log("killtoken: ", killtoken);
     setSession(null);
     localStorage.removeItem("token");
   }
