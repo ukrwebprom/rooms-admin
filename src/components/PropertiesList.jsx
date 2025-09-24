@@ -8,28 +8,28 @@ export default function PropertiesList() {
     const [err, setErr] = useState("");
 
 
-    useEffect(() => {
-        const controller = new AbortController();
+    // useEffect(() => {
+    //     const controller = new AbortController();
 
-    (async () => {
-    try {
-      const res = await client.get("/properties", { signal: controller.signal });
-      setItems(res.data);
-    } catch (e) {
-      if (e.name === "CanceledError" || e.name === "AbortError") {
-        console.log("Запрос отменён");
-      } else {
-        setErr("Не удалось загрузить отели");
-      }
-    } finally {
-      setLoading(false);
-    }
-    })();
+    // (async () => {
+    // try {
+    //   const res = await client.get("/properties", { signal: controller.signal });
+    //   setItems(res.data);
+    // } catch (e) {
+    //   if (e.name === "CanceledError" || e.name === "AbortError") {
+    //     console.log("Запрос отменён");
+    //   } else {
+    //     setErr("Не удалось загрузить отели");
+    //   }
+    // } finally {
+    //   setLoading(false);
+    // }
+    // })();
 
-    return () => {
-        controller.abort();
-    };
-    }, []);
+    // return () => {
+    //     controller.abort();
+    // };
+    // }, []);
 
 
     return (
