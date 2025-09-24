@@ -30,13 +30,23 @@ export function AuthProvider({ children }) {
     }
     (async () => {
       try {
-        const res = await client.get("/auth/profile"); // проверяем токен на сервере
-        console.log('res', res);
-        setUser(res.data.user);
-      } catch {
-        console.log('error');
+        const {data} = await client.get("/auth/profile"); // проверяем токен на сервере
+        console.log('data', data);
+        const newSession = {
+          user: data.user,
+          abilities: data.abilities || [],
+          scopes: data.scopes || {},
+          currentPropertyId: data.currentPropertyId || null,
+        };
+        if (data.token) setToken(data.token); // Bearer-вариант
+        setSession(newSession);
+        localStorage.setItem("auth:session", JSON.stringify(newSession));
+        setAuthReady(true);
+        
+      } catch(e) {
+        setError(e.response?.data?.error || e.message);
         localStorage.removeItem("token");
-        setUser(null);
+        setSession(null);
       } finally {
         setAuthReady(true); // ← готово: теперь роутер может решать
       }

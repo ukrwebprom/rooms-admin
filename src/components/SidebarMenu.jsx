@@ -9,6 +9,7 @@ import {
   CalendarMonthOutlined,
   PeopleAltOutlined,
   BarChartOutlined,
+  ManageAccountsOutlined
 } from "@mui/icons-material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
@@ -19,6 +20,7 @@ const items = [
   { label: "Бронирования", to: "/bookings", icon: <CalendarMonthOutlined /> },
   { label: "Клиенты",   to: "/customers",   icon: <PeopleAltOutlined /> },
   { label: "Отчёты",    to: "/reports",     icon: <BarChartOutlined /> },
+  { label: "Пользователи",    to: "/users",     icon: <ManageAccountsOutlined /> },
 ];
 
 export default function SidebarMenu() {
