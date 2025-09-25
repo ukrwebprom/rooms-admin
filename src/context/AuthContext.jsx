@@ -14,10 +14,7 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null); // null = не залогинен
   const [authReady, setAuthReady] = useState(false);
-  const [session, setSession] = useState(() => {
-    const raw = localStorage.getItem("auth:session");
-    return raw ? JSON.parse(raw) : null;
-  });
+  const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -40,7 +37,7 @@ export function AuthProvider({ children }) {
         };
         if (data.token) setToken(data.token); // Bearer-вариант
         setSession(newSession);
-        localStorage.setItem("auth:session", JSON.stringify(newSession));
+        //localStorage.setItem("auth:session", JSON.stringify(newSession));
         setAuthReady(true);
         
       } catch(e) {
@@ -71,7 +68,7 @@ export function AuthProvider({ children }) {
 
       if (data.token) setToken(data.token); // Bearer-вариант
       setSession(newSession);
-      localStorage.setItem("auth:session", JSON.stringify(newSession));
+      //localStorage.setItem("auth:session", JSON.stringify(newSession));
       setAuthReady(true);
       console.log(newSession);
       return { ok: true };
