@@ -77,8 +77,10 @@ export function AuthProvider({ children }) {
       return { ok: true };
 
     } catch (e) {
+      console.log(e);
       setError(e.response?.data?.error || e.message);
       return { ok: false, error: e.message };
+      
 
     } finally {
       setLoading(false);

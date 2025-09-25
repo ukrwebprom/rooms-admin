@@ -16,7 +16,9 @@ export default function LoginForm() {
     e.preventDefault();
     try {
       //const res = await client.post("/auth/login", form);
-      login(form);
+      const logResult = await login(form);
+      //console.log(logResult);
+      setError(logResult.error);
     } catch (err) {
       setError("Неверный email или пароль");
     }
