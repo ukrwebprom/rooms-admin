@@ -42,8 +42,9 @@ export function AuthProvider({ children }) {
         
       } catch(e) {
         setError(e.response?.data?.error || e.message);
-        localStorage.removeItem("token");
-        setSession(null);
+        console.log(e);
+        //localStorage.removeItem("token");
+        //setSession(null);
       } finally {
         setAuthReady(true); // ← готово: теперь роутер может решать
       }

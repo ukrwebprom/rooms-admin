@@ -21,4 +21,11 @@ client.interceptors.request.use((config) => {
   return config;
 });
 
+client.interceptors.response.use(
+  r => r,
+  async (err) => {
+    console.log(err);
+  }
+)
+
 export default client;
