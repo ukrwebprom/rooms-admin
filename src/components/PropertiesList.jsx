@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import client from "../api/client";
 import "./PropertiesList.css";
+import { useProperty } from "../context/PropertyContext";
 
 export default function PropertiesList() {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState("");
+    const {currentPropertyId, setCurrentPropertyId, getPropertyName} = useProperty();
 
 
     // useEffect(() => {
@@ -34,19 +36,7 @@ export default function PropertiesList() {
 
     return (
         <>
-        <ul>
-            {items.map((hotel) => (
-            <li key={hotel.id}>
-                <strong>{hotel.name}</strong>
-            </li>
-            ))}
-            <li key={'nemo'}>
-                <p>NEMO Resort & SPA</p>
-            </li>
-            <li key={'add'}>
-                <p>add</p>
-            </li>
-        </ul>
+        {/* {currentPropertyId != null && (<p>{getPropertyName(currentPropertyId)}</p>)} */}
         </>
     )
 

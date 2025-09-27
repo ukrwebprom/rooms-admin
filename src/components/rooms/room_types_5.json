@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "rt_std_q",
+      "hotel_id": "h_1",
+      "name": "Стандарт Queen"
+    },
+    {
+      "id": "rt_std_twn",
+      "hotel_id": "h_1",
+      "name": "Стандарт Twin"
+    },
+    {
+      "id": "rt_dlx_k",
+      "hotel_id": "h_1",
+      "name": "Делюкс King"
+    },
+    {
+      "id": "rt_fam",
+      "hotel_id": "h_1",
+      "name": "Семейный"
+    },
+    {
+      "id": "rt_eco_s",
+      "hotel_id": "h_1",
+      "name": "Эконом Single"
+    }
+  ],
+  "meta": {
+    "count": 5
+  }
+}

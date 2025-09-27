@@ -1,0 +1,2432 @@
+[
+  {
+    "id": 1,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 2,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 3,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 4,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 5,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 6,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 7,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 8,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 9,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 10,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 11,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 12,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 13,
+    "status": "OUT_OF_SERVICE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 14,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 15,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 16,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 17,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 18,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 19,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 20,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 21,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 22,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 23,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 24,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 25,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 26,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 27,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 28,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 29,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 30,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 31,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 32,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 33,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 34,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 35,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 36,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 37,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 38,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 39,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 40,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 41,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 42,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 43,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 44,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 45,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 46,
+    "status": "DUE_OUT",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 47,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 48,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 49,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 50,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 51,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 52,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 53,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 54,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 55,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 56,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 57,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 58,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 59,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 60,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 61,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 62,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 63,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 64,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 65,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 66,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 67,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 68,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 69,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 70,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 71,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 72,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 73,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 74,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 75,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 76,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 77,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 78,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 79,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 80,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 81,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 82,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 83,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 84,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 85,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 86,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 87,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 88,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 89,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 90,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 91,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 92,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 93,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 94,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 95,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 96,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 97,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 98,
+    "status": "OUT_OF_SERVICE",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 99,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 100,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 101,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 102,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 103,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 104,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 105,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 106,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 107,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 108,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 109,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 110,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 111,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 112,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 113,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 114,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 115,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 116,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 117,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 118,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 119,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 120,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 121,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 122,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 123,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 124,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 125,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 126,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 127,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 128,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 129,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 130,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 131,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 132,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 133,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 134,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 135,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 136,
+    "status": "OUT_OF_SERVICE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 137,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 138,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 139,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 140,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 141,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 142,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 143,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 144,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 145,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 146,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 147,
+    "status": "DUE_OUT",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 148,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 149,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 150,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 151,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 152,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 153,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 154,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 155,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 156,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 157,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 158,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 159,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 160,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 161,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 162,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 163,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 164,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 165,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 166,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 167,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 168,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 169,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 170,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 171,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 172,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 173,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 174,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 175,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 176,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 177,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 178,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 179,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 180,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 181,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 182,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 183,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 184,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 185,
+    "status": "OUT_OF_SERVICE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 186,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 187,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 188,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 189,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 190,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 191,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 192,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 193,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 194,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 195,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 196,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 197,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 198,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 199,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 200,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 201,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 202,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 203,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 204,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 205,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 206,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 207,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 208,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 209,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 210,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 211,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 212,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 213,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 214,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 215,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 216,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 217,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 218,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 219,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 220,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 221,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 222,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 223,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 224,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 225,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 226,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 227,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 228,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 229,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 230,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 231,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 232,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 233,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 234,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 235,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 236,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 237,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 238,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 239,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 240,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 241,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 242,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 243,
+    "status": "OUT_OF_SERVICE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 244,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 245,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 246,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 247,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 248,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 249,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 250,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 251,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 252,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 253,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 254,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 255,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 256,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 257,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 258,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 259,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 260,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 261,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 262,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 263,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 264,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 265,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 266,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 267,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 268,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 269,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 270,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 271,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 272,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 273,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 274,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 275,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 276,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 277,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 278,
+    "status": "DUE_OUT",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 279,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 280,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 281,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 282,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 283,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 284,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 285,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 286,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 287,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 288,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 289,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 290,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 291,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 292,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 293,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 294,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 295,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 296,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 297,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 298,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 299,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 300,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 301,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 302,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 303,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 304,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 305,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 306,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 307,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 308,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 309,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 310,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 311,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 312,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 313,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 314,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 315,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 316,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 317,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 318,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 319,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 320,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 321,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 322,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 323,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 324,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 325,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 326,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 327,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 328,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  },
+  {
+    "id": 329,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 330,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 331,
+    "status": "CHECKED_OUT",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 332,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 333,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 334,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 335,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 336,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 337,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 338,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 339,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 340,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 341,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 342,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 343,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 344,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 345,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 346,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 347,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 348,
+    "status": "DUE_OUT",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 349,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 350,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 351,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 352,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 353,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 354,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 355,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 356,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 357,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 358,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 359,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 360,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 361,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 362,
+    "status": "CHECKED_IN",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 363,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 364,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 365,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 366,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 367,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 368,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 369,
+    "status": "RESERVED",
+    "floor": 4,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 370,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 371,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 372,
+    "status": "CHECKED_IN",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 373,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 374,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 375,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 376,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 377,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 378,
+    "status": "CHECKED_OUT",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 379,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 380,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 381,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 382,
+    "status": "OUT_OF_SERVICE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 383,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 384,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 385,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 386,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 387,
+    "status": "CHECKED_OUT",
+    "floor": 4,
+    "type": "rt_fam"
+  },
+  {
+    "id": 388,
+    "status": "OUT_OF_SERVICE",
+    "floor": 1,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 389,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 390,
+    "status": "RESERVED",
+    "floor": 3,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 391,
+    "status": "FREE",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 392,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 393,
+    "status": "FREE",
+    "floor": 4,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 394,
+    "status": "FREE",
+    "floor": 1,
+    "type": "rt_fam"
+  },
+  {
+    "id": 395,
+    "status": "CHECKED_IN",
+    "floor": 2,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 396,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 397,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_std_q"
+  },
+  {
+    "id": 398,
+    "status": "DUE_OUT",
+    "floor": 2,
+    "type": "rt_fam"
+  },
+  {
+    "id": 399,
+    "status": "CHECKED_IN",
+    "floor": 4,
+    "type": "rt_std_twn"
+  },
+  {
+    "id": 400,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 401,
+    "status": "CHECKED_OUT",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 402,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_dlx_k"
+  },
+  {
+    "id": 403,
+    "status": "RESERVED",
+    "floor": 2,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 404,
+    "status": "RESERVED",
+    "floor": 1,
+    "type": "rt_eco_s"
+  },
+  {
+    "id": 405,
+    "status": "FREE",
+    "floor": 3,
+    "type": "rt_fam"
+  }
+]

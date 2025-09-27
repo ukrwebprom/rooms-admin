@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
         const newSession = {
           user: data.user,
           abilities: data.abilities || [],
-          scopes: data.scopes || {},
+          properties: data.properties || {},
           currentPropertyId: data.currentPropertyId || null,
         };
         if (data.token) setToken(data.token); // Bearer-вариант
@@ -57,19 +57,15 @@ export function AuthProvider({ children }) {
     
     try {
       const { data } = await client.post("/auth/login", { email, password });
-      // const { data } = await client.get("/auth2/test-login", { email, password });
       
-      // сервер возвращает: user, abilities, scopes, currentPropertyId, token?
       const newSession = {
         user: data.user,
         abilities: data.abilities || [],
         properties: data.properties || [],
-        currentPropertyId: data.currentPropertyId || null,
       };
 
       if (data.token) setToken(data.token); // Bearer-вариант
       setSession(newSession);
-      //localStorage.setItem("auth:session", JSON.stringify(newSession));
       setAuthReady(true);
       console.log(newSession);
       return { ok: true };
@@ -92,25 +88,15 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
   }
 
-  const setCurrentPropertyId = (propertyId) => {
-    const updated = { ...session, currentPropertyId: propertyId };
-    setSession(updated);
-    localStorage.setItem("auth:session", JSON.stringify(updated));
-  };
 
   const isAuthenticated = !!session?.user;
 
   const value = useMemo(() => ({
-    user: session?.user || null,
-    abilities: session?.abilities || [],
-    scopes: session?.scopes || {},
-    currentPropertyId: session?.currentPropertyId || null,
+    session,
     loading, error,
-    login, logout, setCurrentPropertyId,
+    login, logout,
     isAuthenticated, authReady
   }), [session, loading, error]);
-
-  // const value = { user, login, logout, authReady, isAuthenticated: !!user };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

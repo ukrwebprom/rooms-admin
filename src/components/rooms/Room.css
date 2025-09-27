@@ -1,0 +1,59 @@
+.room {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #9acfa5;
+    font-family: inherit;
+    font-weight: 400;
+    color:white;
+    cursor:pointer;
+}
+.room p {
+    padding:0;
+    margin:0;
+    line-height: 0.5em;
+}
+
+.room:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+    transform: translateY(-1px);
+  }
+
+.free {
+    background-color: #fff;
+    color: #999;
+}
+.reserved {
+    background-color: #f59fbd;
+}
+.checkin {
+    background-color: #9acfa5;
+}
+.noservice {
+    background-color: #333;
+}
+.dueout {
+    background-color: aquamarine;
+} 
+.checkout {
+    background-color:blueviolet;
+}
+
+.s {
+    width:50px;
+    height:50px;
+    font-size: 16px;
+}
+
+.m {
+    width:60px;
+    height:60px;
+    font-size: 18px;
+}
+
+.l {
+    width:80px;
+    height:80px;
+    font-size: 23px;
+}
