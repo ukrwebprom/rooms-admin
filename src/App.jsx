@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 import { useAuth } from "./context/AuthContext";
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import PropertiesList from './components/PropertiesList';
 import PropertyForm from './components/PropertyForm';
 import Rooms from './components/Rooms';
+import Reservations from './components/Reservations';
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
           <Route path="/properties/new" element={<PropertyForm mode="create" />} />
           <Route path="/properties/:id/edit" element={<PropertyForm mode="edit" />} />
           <Route path="/rooms" element={<Rooms/>} />
+          <Route path="/bookings" element={<Reservations />} />
+          <Route path="/bookings/new" element={<Reservations mode="create" />} />
         </Route>
 
         <Route path="/" 
