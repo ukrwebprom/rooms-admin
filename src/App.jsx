@@ -12,6 +12,7 @@ import PropertiesList from './components/PropertiesList';
 import PropertyForm from './components/PropertyForm';
 import Rooms from './components/Rooms';
 import Reservations from './components/Reservations';
+import Clients from "./components/Clients";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/rooms" element={<Rooms/>} />
           <Route path="/bookings" element={<Reservations />} />
           <Route path="/bookings/new" element={<Reservations mode="create" />} />
+          <Route path="/clients" element={<Clients />} />
         </Route>
 
         <Route path="/" 

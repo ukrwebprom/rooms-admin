@@ -18,7 +18,7 @@ const items = [
   { label: "Отели",     to: "/properties",  icon: <ApartmentOutlined /> },
   { label: "Номера",    to: "/rooms",       icon: <BedOutlined /> },
   { label: "Бронирования", to: "/bookings", icon: <CalendarMonthOutlined /> },
-  { label: "Клиенты",   to: "/customers",   icon: <PeopleAltOutlined /> },
+  { label: "Клиенты",   to: "/clients",   icon: <PeopleAltOutlined /> },
   { label: "Отчёты",    to: "/reports",     icon: <BarChartOutlined /> },
   { label: "Пользователи",    to: "/users",     icon: <ManageAccountsOutlined /> },
 ];
