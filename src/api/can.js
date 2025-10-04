@@ -1,11 +1,11 @@
 import { useAuth } from "../context/AuthContext";
 
 export function useCan() {
-    const { abilities } = useAuth();
+    const { session } = useAuth();
   
     const can = (ability) => {
-      if (!abilities) return false;
-      return abilities.includes(ability);
+      if (!session?.abilities) return false;
+      return session.abilities.includes(ability);
     };
   
     return { can };

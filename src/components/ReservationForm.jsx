@@ -1,105 +1,117 @@
-import { Box, Paper, Typography, Stack, Button, TextField, MenuItem } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import {
+    Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
+    Autocomplete, Button, Tabs, Tab
+  } from "@mui/material";
 
 
 export default function ReservationForm() {
 
-    const [clientOption, setClientOption] = useState(null);
+    const [clientValue, setClientValue] = useState(null);
     const [clientInput, setClientInput] = useState("");
+    const [roomType, setRoomType] = useState(0);
+    const handleChangeRoomType = (event, newValue) => {
+      setRoomType(newValue);
+    };
 
-  // ВРЕМЕННО: мок-список клиентов (потом заменим запросом к API)
-  const allClients = useMemo(
-    () => [
-      { id: "c1-uuid", label: "Иван Петров · ivan@example.com" },
-      { id: "c2-uuid", label: "Мария Сидорова · maria@example.com" },
-    ],
-    []
-  );
+    const handleSubmit = (e) => e.preventDefault();
 
- // Фильтрация по введённому тексту
-  const filtered = useMemo(() => {
-    const q = clientInput.trim().toLowerCase();
-    if (!q) return allClients;
-    return allClients.filter(c => c.label.toLowerCase().includes(q));
-  }, [clientInput, allClients]);
+   return (
+      <>
+  <Box component="form" onSubmit={handleSubmit} sx={{ p: 2 }}>
+  <Paper elevation={1} sx={{ p: 2.5, borderRadius: 3 }}>
+      <Stack
+          direction='column'
+          spacing={3}
+          >
 
-  // Добавим «виртуальную» опцию для создания нового клиента
-  const options = useMemo(() => {
-    const base = filtered;
-    const showCreate = clientInput.trim().length > 1 && !base.length;
-    return showCreate
-      ? [{ id: "__create__", label: `+ Создать нового клиента “${clientInput}”` }]
-          .concat(base)
-      : base;
-  }, [filtered, clientInput]);
-
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const fd = new FormData(e.currentTarget);
-  const payload = {
-    room_id: Number(fd.get("room_id")),
-    start_utc: new Date(fd.get("start_utc")).toISOString(),
-    end_utc: new Date(fd.get("end_utc")).toISOString(),
-    client: clientOption?.id === "__create__"
-        ? { create: true, hint: clientInput.trim() } // на следующем шаге откроем диалог
-        : { id: clientOption?.id || null },
-  };
-  console.log("payload:", payload);
-}
-
-    return (
-    <Box p={2}>
-      <Paper sx={{ p: 2 }}>
-        <form onSubmit={handleSubmit}>
-          <Stack spacing={2}>
-            <TextField
-  label="Заезд (UTC)"
-  type="datetime-local"
-  name="start_utc"
-  InputLabelProps={{ shrink: true }}
-  required
-/>
-<TextField
-  label="Выезд (UTC)"
-  type="datetime-local"
-  name="end_utc"
-  InputLabelProps={{ shrink: true }}
-  required
-/>
-<TextField
-  select
-  label="Комната"
-  name="room_id"
-  defaultValue=""
-  required
->
-  <MenuItem value="" disabled>Выберите комнату</MenuItem>
-  <MenuItem value={101}>Комната 101</MenuItem>
-  <MenuItem value={102}>Комната 102</MenuItem>
-</TextField>
+            {/* ---------------------------------- Source / dates section ---------------- */}
+      
+            <Grid container spacing={2} sx={{ mb: 2 }}>
+              <Grid size={4}>
+                <TextField select label="Booking source" defaultValue="" fullWidth>
+                <MenuItem value="" disabled>Не выбран</MenuItem>
+                <MenuItem value="DIRECT">Direct</MenuItem>
+                <MenuItem value="WALK_IN">Walk-in</MenuItem>
+                <MenuItem value="BOOKING">Booking</MenuItem>
+                <MenuItem value="EXPEDIA">Expedia</MenuItem>
+                </TextField>
+              </Grid>
+              <Grid size={4}>
+                <TextField
+                  label="Сheck-in (UTC)" type="datetime-local" InputLabelProps={{ shrink: true }}
+                  fullWidth
+                />
+              </Grid>
+              <Grid size={4}>
+                <TextField
+                  label="Check-out (UTC)" type="datetime-local" InputLabelProps={{ shrink: true }}
+                  fullWidth
+                />
+              </Grid>
+            </Grid>
+            {/* ---------------------------------- end of Source / dates section ---------------- */}
+            
+            {/* ---------------------------------- Client section ------------------------------- */}
+            <Box sx={{ flex: 1, minWidth: 0 }}>
 
             <Autocomplete
-              options={options}
-              getOptionLabel={(opt) => opt?.label ?? ""}
-              value={clientOption}
-              onChange={(_, val) => setClientOption(val)}
+              options={[]}
+              value={clientValue}
+              onChange={(_, v) => setClientValue(v)}
               inputValue={clientInput}
-              onInputChange={(_, val) => setClientInput(val)}
-              renderInput={(params) => (
-                <TextField {...params} label="Клиент" placeholder="Имя, email или телефон" required />
-              )}
-              noOptionsText={
-                clientInput.trim().length > 1
-                  ? `Нет совпадений. Нажмите на “+ Создать нового клиента…”.`
-                  : "Начните вводить имя/email/телефон"
-              }
+              onInputChange={(_, v) => setClientInput(v)}
+              renderInput={(p) => <TextField {...p} label="Client" required fullWidth />}
+              noOptionsText="Start typing"
+              fullWidth
             />
-            <Button type="submit" variant="contained">Сохранить</Button>
-          </Stack>
-        </form>
-      </Paper>
-    </Box>
-    )
+            
+            <Box component="fieldset"
+              disabled={true}
+              sx={{
+                p: 0, m: 0, border: 0, mt:2,
+                opacity: false ? 1 : 0.5, // визуально «неактивно»
+              }}>
+
+              <Grid container spacing={2}>
+              <Grid size={6}>
+                <TextField label="First name"  fullWidth/>
+              </Grid>
+              <Grid size={6}>
+                <TextField label="Last name"  fullWidth/>
+              </Grid>
+              <Grid size={6}>
+                <TextField label="Email" type="email" fullWidth />
+              </Grid>
+              <Grid size={6}>
+                <TextField label="Phone"  fullWidth/>
+              </Grid>
+              <Grid size={12}>
+                <TextField label="Notes" multiline minRows={3}  fullWidth/>
+              </Grid>
+              </Grid>
+            </Box>
+            </Box>
+            {/* ---------------------------------- end of Client section ---------------- */}
+            {/* ---------------------------------- Rooms section ---------------- */}
+            <>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Tabs value={roomType} onChange={handleChangeRoomType} aria-label="basic tabs example">
+                <Tab label="Item One" value={0}/>
+                <Tab label="Item Two" value={1} />
+                <Tab label="Item Three" value={2} />
+              </Tabs>
+            </Box>
+              <p value={roomType}>{roomType}</p>
+            </>
+            {/* ---------------------------------- end of Rooms section ---------------- */}
+      </Stack>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 2 }}>
+          <Button>Cancel</Button>
+          <Button variant="contained">Create booking</Button>
+      </Box>
+  </Paper>
+  </Box>
+  </>
+    );
 }

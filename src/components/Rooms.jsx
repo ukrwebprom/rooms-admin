@@ -5,7 +5,7 @@ import roomTypes from './rooms/room_types_5.json';
 import Grid from "@mui/material/Grid";
 import RoomsToolbar from './rooms/RoomsToolbar';
 import Divider from "@mui/material/Divider";
-import { STATUS, ROOM_TYPE } from '../constants/room';
+import { STATUS, ROOM_TYPE } from '../constants/constants';
 
 
 const roomsByType = (type) => {

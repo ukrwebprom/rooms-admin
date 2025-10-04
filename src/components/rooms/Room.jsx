@@ -1,5 +1,5 @@
 import "./Room.css";
-import { STATUS, ROOM_TYPE } from '../../constants/room';
+import { STATUS, ROOM_TYPE } from '../../constants/constants';
 
 function Room({status, num, size}) {
 

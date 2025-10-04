@@ -35,14 +35,14 @@ function Navbar() {
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}
 
         >
-              <MenuItem onClick={handleCloseMenu}>Профиль</MenuItem>
+              <MenuItem onClick={handleCloseMenu}>Profile</MenuItem>
               <MenuItem
                 onClick={() => {
                   handleCloseMenu();
                   logout();
                 }}
               >
-                Выйти
+                Logout
               </MenuItem>
         </Menu>
       </Toolbar>
