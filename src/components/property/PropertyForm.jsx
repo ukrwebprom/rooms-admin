@@ -2,18 +2,25 @@ import {Box, Typography, TextField, Grid, Button} from "@mui/material";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import client from "../../api/client";
+import { useAuth } from "../../context/AuthContext";
+import { useProperty } from "../../context/PropertyContext";
+import { useNavigate } from 'react-router-dom';
 
 export default function PropertyForm({id, mode}) {
     const [hotelData, setHotelData] = useState();
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(null);
+    const {updatePropertyList} = useAuth();
+    const {setCurrentPropertyId} = useProperty();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
     e.preventDefault();
     client
     .post('/properties/', hotelData)
     .then(({data}) => {
-        console.log(data);
+        updatePropertyList(data.id);
+        navigate(`/properties/`);
     })
     .catch((e) => {setErr(e.message);})
     .finally()
@@ -48,7 +55,7 @@ export default function PropertyForm({id, mode}) {
     }, [mode])
 
     if (loading) return <>Загрузка…</>;
-    if (err) return <>Ошибка: {err}</>;
+    if (err) return <Typography color="error">{err}</Typography>;
     if (!hotelData) return <>No data</>;
     return(
         <Box component="form" onSubmit={handleSubmit} sx={{ p: 0 }} mt={3}>

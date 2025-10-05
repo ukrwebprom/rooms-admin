@@ -88,13 +88,28 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
   }
 
+  const updatePropertyList = async() => {
+    setLoading(true); setError(null);
+    client
+    .get('/properties/')
+        .then(({ data }) => {
+            const updatedProperties = data.map((p) => ({property_name:p.name, property_id:p.id}));
+            setSession({...session, properties: updatedProperties});
+            return true;
+          })
+        .catch((e) => { 
+          setError(e.response?.data?.error || e.message);
+          return { ok: false, error: e.message };
+         })
+        .finally(() => { setLoading(false); });
+  }
 
   const isAuthenticated = !!session?.user;
 
   const value = useMemo(() => ({
     session,
     loading, error,
-    login, logout,
+    login, logout, updatePropertyList,
     isAuthenticated, authReady
   }), [session, loading, error]);
 
