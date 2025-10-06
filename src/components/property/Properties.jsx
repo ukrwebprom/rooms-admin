@@ -5,7 +5,7 @@ import { useCan } from '../../api/can';
 import { Link } from "react-router-dom";
 import PropertyForm from "./PropertyForm";
 import PropertyUsers from "./PropertyUsers";
-import PropertyRoomClasses from "./PropertyRoomClasses";
+import {PropertyRoomClasses, PropertyRoomClassesAdd} from "./PropertyRoomClasses";
 import {
     Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
     Autocomplete, Button, Tabs, Tab, Toolbar
@@ -74,7 +74,7 @@ export default function Properties({mode}) {
             <Tab label='Rooms' value={4} disabled={mode==='create'}/>
             {can('user_watch') && <Tab label='Users' value={1} disabled={mode==='create'}/>}
         </Tabs>
-        {currentTab === 2 && (
+        {(currentTab === 2 && !action) && (
             <Button
             variant="contained"
             size="small"
@@ -102,6 +102,7 @@ export default function Properties({mode}) {
             <PropertyUsers property_id={currentPropertyId} action={action} />
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={2}>
+            {action === 'add_category' && <PropertyRoomClassesAdd />}
             <PropertyRoomClasses property_id={currentPropertyId} action={action} />
         </CustomTabPanel>
         

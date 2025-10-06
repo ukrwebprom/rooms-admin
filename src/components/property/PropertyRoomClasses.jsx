@@ -8,7 +8,13 @@ import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function PropertyRoomClasses({property_id, action}) {
+export function PropertyRoomClassesAdd() {
+  return (
+    <p>Add form</p>
+  )
+}
+
+export function PropertyRoomClasses({property_id, action}) {
     const [classes, setClasses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState(null);
