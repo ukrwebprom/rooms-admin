@@ -5,6 +5,7 @@ import { useCan } from '../../api/can';
 import { Link } from "react-router-dom";
 import PropertyForm from "./PropertyForm";
 import PropertyUsers from "./PropertyUsers";
+import PropertyRoomClasses from "./PropertyRoomClasses";
 import {
     Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
     Autocomplete, Button, Tabs, Tab, Toolbar
@@ -76,6 +77,9 @@ export default function Properties({mode}) {
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={1}>
             <PropertyUsers property_id={currentPropertyId} />
+        </CustomTabPanel>
+        <CustomTabPanel value={currentTab} index={2}>
+            <PropertyRoomClasses property_id={currentPropertyId} />
         </CustomTabPanel>
         
         </Paper>
