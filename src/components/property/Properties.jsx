@@ -10,7 +10,7 @@ import {
     Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
     Autocomplete, Button, Tabs, Tab, Toolbar
   } from "@mui/material";
-
+import AddIcon from '@mui/icons-material/Add';
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -28,6 +28,7 @@ export default function Properties({mode}) {
     const [err, setErr] = useState("");
     const {currentPropertyId, setCurrentPropertyId, getPropertyName} = useProperty();
     const [currentTab, setCurrentTab] = useState(0);
+    const [action, setAction] = useState(null);
     const handleChangeTab = (event, newValue) => {
         setCurrentTab(newValue);
     };
@@ -65,21 +66,43 @@ export default function Properties({mode}) {
         
         <Box sx={{ p: 0 }}>
         <Paper elevation={1} sx={{ p: 0, borderRadius: 3 }}>
-        <Tabs value={currentTab} onChange={handleChangeTab} sx={{p:2}}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1, borderBottom: 1, borderColor: 'divider', pr: 4 }}>
+        <Tabs value={currentTab} onChange={handleChangeTab} sx={{p:2, flexGrow: 1}}>
             <Tab label='Main' value={0}/>
             <Tab label='Room categories' value={2} disabled={mode==='create'}/>
             <Tab label='Locations / Floors' value={3} disabled={mode==='create'}/>
             <Tab label='Rooms' value={4} disabled={mode==='create'}/>
             {can('user_watch') && <Tab label='Users' value={1} disabled={mode==='create'}/>}
         </Tabs>
+        {currentTab === 2 && (
+            <Button
+            variant="contained"
+            size="small"
+            startIcon={<AddIcon />}
+            onClick={() => setAction('add_category')}
+            sx={{ ml: 2 }}
+            >
+            Add category
+            </Button>  )}
+        {currentTab === 1 && (
+            <Button
+            variant="contained"
+            size="small"
+            startIcon={<AddIcon />}
+            onClick={() => setAction('add_client')}
+            sx={{ ml: 2 }}
+            >
+            Add user
+            </Button>  )}
+        </Box>
         <CustomTabPanel value={currentTab} index={0}>
             <PropertyForm id={mode==='create'? null : currentPropertyId} mode={mode}/>
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={1}>
-            <PropertyUsers property_id={currentPropertyId} />
+            <PropertyUsers property_id={currentPropertyId} action={action} />
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={2}>
-            <PropertyRoomClasses property_id={currentPropertyId} />
+            <PropertyRoomClasses property_id={currentPropertyId} action={action} />
         </CustomTabPanel>
         
         </Paper>

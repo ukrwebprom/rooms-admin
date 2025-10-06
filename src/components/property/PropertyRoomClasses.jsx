@@ -8,12 +8,20 @@ import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function PropertyRoomClasses({property_id}) {
+export default function PropertyRoomClasses({property_id, action}) {
     const [classes, setClasses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState(null);
     const [editRow, setEditRow] = useState(null);
     const [draft, setDraft] = useState({ code: '', name: '' });
+
+    useEffect(() => {
+      if(action === 'add_category') 
+      {
+        setEditRow('new');
+        setDraft({ code: '', name: '' });
+      }
+    }, [action]);
 
     useEffect(() => {
         if (!property_id) return;
@@ -40,7 +48,7 @@ export default function PropertyRoomClasses({property_id}) {
     }
 
     const cancel = () => {
-        return null
+      setEditRow(null);
     }
 
     const deleteRow = (row) => {
@@ -62,6 +70,35 @@ export default function PropertyRoomClasses({property_id}) {
           </TableRow>
         </TableHead>
         <TableBody>
+            {editRow === 'new' && (
+                <TableRow
+                key='new'
+                sx={{ '&:last-child td, &:last-child th': { border: 0 }, bgcolor: 'grey.50' }}>
+
+                  <TableCell align="left">
+                    <TextField
+                      size="small"
+                      value={draft.code}
+                      onChange={e => setDraft(d => ({ ...d, code: e.target.value }))}
+                    />
+                  </TableCell>
+                  <TableCell align="left">
+                    <TextField
+                     size="small"
+                     value={draft.name}
+                     onChange={e => setDraft(d => ({ ...d, name: e.target.value }))}
+                     fullWidth
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
+                      <IconButton onClick={save}><CheckIcon/></IconButton>
+                      <IconButton onClick={cancel}><CloseIcon/></IconButton>
+                    </Box>
+                  </TableCell>
+
+                </TableRow>
+            )}
             {classes.map((c) => (
                 <TableRow
               key={c.id}
