@@ -5,7 +5,7 @@ import { useCan } from '../../api/can';
 import { Link } from "react-router-dom";
 import PropertyForm from "./PropertyForm";
 import PropertyUsers from "./PropertyUsers";
-import {PropertyRoomClasses, PropertyRoomClassesAdd} from "./PropertyRoomClasses";
+import PropertyRoomClasses from "./PropertyRoomClasses";
 import {
     Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
     Autocomplete, Button, Tabs, Tab, Toolbar
@@ -30,6 +30,7 @@ export default function Properties({mode}) {
     const [currentTab, setCurrentTab] = useState(0);
     const [action, setAction] = useState(null);
     const handleChangeTab = (event, newValue) => {
+        setAction(null);
         setCurrentTab(newValue);
     };
     const { can } = useCan();
@@ -38,6 +39,7 @@ export default function Properties({mode}) {
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
+        
         setValue(newValue);
     };
 
@@ -74,13 +76,14 @@ export default function Properties({mode}) {
             <Tab label='Rooms' value={4} disabled={mode==='create'}/>
             {can('user_watch') && <Tab label='Users' value={1} disabled={mode==='create'}/>}
         </Tabs>
-        {(currentTab === 2 && !action) && (
+        {currentTab === 2 && (
             <Button
             variant="contained"
             size="small"
             startIcon={<AddIcon />}
             onClick={() => setAction('add_category')}
             sx={{ ml: 2 }}
+            disabled = {!!action}
             >
             Add category
             </Button>  )}
@@ -99,11 +102,11 @@ export default function Properties({mode}) {
             <PropertyForm id={mode==='create'? null : currentPropertyId} mode={mode}/>
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={1}>
-            <PropertyUsers property_id={currentPropertyId} action={action} />
+            <PropertyUsers property_id={currentPropertyId} />
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={2}>
-            {action === 'add_category' && <PropertyRoomClassesAdd />}
-            <PropertyRoomClasses property_id={currentPropertyId} action={action} />
+            {/* {action === 'add_category' && <PropertyRoomClassesAdd property_id={currentPropertyId} onClose={() => setAction(null)}/>} */}
+            <PropertyRoomClasses property_id={currentPropertyId} onClose={() => setAction(null)} action={action} />
         </CustomTabPanel>
         
         </Paper>

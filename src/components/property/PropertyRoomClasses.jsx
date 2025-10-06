@@ -8,26 +8,13 @@ import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export function PropertyRoomClassesAdd() {
-  return (
-    <p>Add form</p>
-  )
-}
-
-export function PropertyRoomClasses({property_id, action}) {
+export default function PropertyRoomClasses({property_id, onClose, action}) {
     const [classes, setClasses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState(null);
     const [editRow, setEditRow] = useState(null);
     const [draft, setDraft] = useState({ code: '', name: '' });
-
-    useEffect(() => {
-      if(action === 'add_category') 
-      {
-        setEditRow('new');
-        setDraft({ code: '', name: '' });
-      }
-    }, [action]);
+    const [newClass, setNewClass] = useState({ code: '', name: '' });
 
     useEffect(() => {
         if (!property_id) return;
@@ -61,11 +48,55 @@ export function PropertyRoomClasses({property_id, action}) {
         return null
     }
 
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(draft);
+    client
+    .post(`/properties/${encodeURIComponent(property_id)}/room-classes`, newClass)
+    .then(({ data }) => { 
+                if(data) setClasses(prev => [data, ...prev]); 
+                console.log(data);
+            })
+    .catch((e) => { setErr(e.message); })
+    .finally(() => { setLoading(false); });
+    onClose();
+    }
+
     if (loading) return <>Загрузка…</>;
     if (err) return <>Ошибка: {err}</>;
     if (!classes) return <>No Room Categories</>;
     return (
         <>
+        {action === 'add_category' && (
+    <Box component="form" onSubmit={handleSubmit} sx={{ p: 0 }} mb={3}>
+      <Paper sx={{ p: 2 }}>
+      <Grid container spacing={2}>
+        <Grid size={2}>
+          <TextField
+            label="Code"
+            value= {newClass.code}
+            onChange={e => setNewClass({ ...newClass, code: e.target.value })}
+            fullWidth
+            />
+        </Grid>
+        <Grid size={6}>
+          <TextField
+            label="Title"
+            value= {newClass.name}
+            onChange={e => setNewClass({ ...newClass, name: e.target.value })}
+            fullWidth
+            />
+        </Grid>
+        <Grid>
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 1 }}>
+                <Button onClick={onClose}>Cancel</Button>
+                <Button variant="contained" type="submit">Create</Button>
+          </Box>
+        </Grid>
+      </Grid>
+      </Paper>
+    </Box>
+    )}
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
         <TableHead>
@@ -76,35 +107,6 @@ export function PropertyRoomClasses({property_id, action}) {
           </TableRow>
         </TableHead>
         <TableBody>
-            {editRow === 'new' && (
-                <TableRow
-                key='new'
-                sx={{ '&:last-child td, &:last-child th': { border: 0 }, bgcolor: 'grey.50' }}>
-
-                  <TableCell align="left">
-                    <TextField
-                      size="small"
-                      value={draft.code}
-                      onChange={e => setDraft(d => ({ ...d, code: e.target.value }))}
-                    />
-                  </TableCell>
-                  <TableCell align="left">
-                    <TextField
-                     size="small"
-                     value={draft.name}
-                     onChange={e => setDraft(d => ({ ...d, name: e.target.value }))}
-                     fullWidth
-                    />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
-                      <IconButton onClick={save}><CheckIcon/></IconButton>
-                      <IconButton onClick={cancel}><CloseIcon/></IconButton>
-                    </Box>
-                  </TableCell>
-
-                </TableRow>
-            )}
             {classes.map((c) => (
                 <TableRow
               key={c.id}
