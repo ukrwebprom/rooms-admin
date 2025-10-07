@@ -36,8 +36,33 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
         setEditRow(row.id);
         setDraft({ code: row.code ?? '', name: row.name ?? '' });
     };
+    const isModified = () => {
+      if(!editRow) return false;
+      if(draft.code.trim().toUpperCase() === classes.find((e) => e.id===editRow).code &&
+        draft.name.trim() === classes.find((e) => e.id===editRow).name
+      ) return false;
+      return true;
+    }
+
     const save = () => {
-        return null
+      console.log('id:', editRow, "data:", draft);
+      // PATCH /properties/:propertyId/room-classes/:classId
+      client
+      .patch(`/properties/${encodeURIComponent(property_id)}/room-classes/${editRow}`, draft )
+      .then(({ data }) => {
+        if(data) {
+          setClasses(prev =>
+            prev.map(item =>
+              item.id === editRow ? { ...item, code: data.code, name:data.name } : item
+            )
+          );
+          }
+        })
+      .catch((e) => {setErr(e.message); })
+      .finally(() => {
+        setLoading(false); 
+        setEditRow(null);
+      });
     }
 
     const cancel = () => {
@@ -45,7 +70,15 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     }
 
     const deleteRow = (row) => {
-        return null
+      client
+      .delete(`/properties/${encodeURIComponent(property_id)}/room-classes/${row.id}`)
+      .then(({ data }) => {
+        if(data.ok) {
+            setClasses(prev => prev.filter(p => p.id !== data.id));
+          }
+        })
+      .catch((e) => {setErr(e.message); })
+      .finally(() => {setLoading(false); });
     }
 
     const handleSubmit = async (e) => {
@@ -100,7 +133,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
         <TableHead>
-          <TableRow>
+          <TableRow sx={{bgcolor: 'pink'}}>
             <TableCell>Code</TableCell>
             <TableCell align="left">Title</TableCell>
             <TableCell align="right" width={80}>Actions</TableCell>
@@ -148,7 +181,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
                 </TableCell>
                 <TableCell align="right">
                     <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
-                      <IconButton onClick={save}><CheckIcon/></IconButton>
+                      <IconButton onClick={save} disabled={!isModified()} ><CheckIcon/></IconButton>
                       <IconButton onClick={cancel}><CloseIcon/></IconButton>
                     </Box>
                 </TableCell>
