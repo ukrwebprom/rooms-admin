@@ -1,5 +1,5 @@
 import {Box, Typography, TextField, Grid, Button} from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import client from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function PropertyForm({id, mode}) {
     const [hotelData, setHotelData] = useState();
+    const [originalData, setOriginalData] = useState();
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(null);
     const {updatePropertyList} = useAuth();
@@ -16,14 +17,17 @@ export default function PropertyForm({id, mode}) {
 
     const handleSubmit = async (e) => {
     e.preventDefault();
-    client
-    .post('/properties/', hotelData)
-    .then(({data}) => {
-        updatePropertyList(data.id);
-        navigate(`/properties/`);
-    })
-    .catch((e) => {setErr(e.message);})
-    .finally()
+    if(mode==='create') {
+        client.post('/properties/', hotelData)
+        .then(({data}) => {
+            updatePropertyList(data.id);
+            navigate(`/properties/`);
+        })
+        .catch((e) => {setErr(e.message);})
+        .finally()
+    } else {
+        console.log('update hotel info');
+    }
     };
 
 
@@ -34,7 +38,9 @@ export default function PropertyForm({id, mode}) {
         client
         .get(`/properties/${encodeURIComponent(id)}`)
         .then(({ data }) => { if (!cancelled) 
-            setHotelData(data); })
+            setHotelData(data); 
+            setOriginalData(data);
+        })
         .catch((e) => { if (!cancelled) setErr(e.message); })
         .finally(() => { if (!cancelled) setLoading(false); });
 
@@ -43,7 +49,8 @@ export default function PropertyForm({id, mode}) {
     }, [id]);
 
     useEffect(() => {
-        if(mode === 'create') setHotelData({
+        if(mode === 'create') 
+        setHotelData({
             name:'',
             country:'',
             city:'',
@@ -52,7 +59,27 @@ export default function PropertyForm({id, mode}) {
             phone:'',
             description:''
         });
-    }, [mode])
+        setOriginalData({
+            name:'',
+            country:'',
+            city:'',
+            address:'',
+            email:'',
+            phone:'',
+            description:''
+        });
+    }, [mode]);
+
+    const normalize = (o={}) => {
+        const n = {};
+        for (const k of Object.keys(o)) {
+          const v = o[k];
+          n[k] = v == null ? '' : String(v).trim();
+        }
+        return n;
+      };
+    const stable = (o={}) => JSON.stringify(normalize(o), Object.keys(o).sort());
+    const isModified= useMemo(() => stable(hotelData) !== stable(originalData), [hotelData, originalData]);
 
     if (loading) return <>Загрузка…</>;
     if (err) return <Typography color="error">{err}</Typography>;
@@ -109,7 +136,7 @@ export default function PropertyForm({id, mode}) {
             </Grid>
             <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 2 }}>
                 {mode==='create' && <Button  component={Link} to="/properties/">Cancel</Button>}
-                <Button variant="contained" type="submit">{mode==='create' ? 'Create' : 'Update'}</Button>
+                <Button variant="contained" type="submit" disabled={!isModified}>{mode==='create' ? 'Create' : 'Update'}</Button>
             </Box>
         </Box>
     )
