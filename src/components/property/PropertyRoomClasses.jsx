@@ -26,7 +26,6 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
             .get(`/properties/${encodeURIComponent(property_id)}/room-classes`)
             .then(({ data }) => { if (!cancelled) 
                 data.length > 0 ? setClasses(data) : setClasses(null); 
-                console.log(data);
             })
             .catch((e) => { if (!cancelled) setErr(e.message); })
             .finally(() => { if (!cancelled) setLoading(false); });

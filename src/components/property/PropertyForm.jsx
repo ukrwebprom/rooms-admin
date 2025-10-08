@@ -26,7 +26,13 @@ export default function PropertyForm({id, mode}) {
         .catch((e) => {setErr(e.message);})
         .finally()
     } else {
-        console.log('update hotel info');
+        client.patch(`/properties/${encodeURIComponent(id)}`, hotelData)
+        .then(({data}) => {
+            setHotelData(data); 
+            setOriginalData(data);
+        })
+        .catch((e) => {setErr(e.message);})
+        .finally()
     }
     };
 
