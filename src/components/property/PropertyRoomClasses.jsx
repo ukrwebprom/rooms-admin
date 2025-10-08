@@ -7,6 +7,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { ConfirmDialog } from "../ConfirmDialog";
 
 export default function PropertyRoomClasses({property_id, onClose, action}) {
     const [classes, setClasses] = useState(null);
@@ -15,6 +16,8 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     const [editRow, setEditRow] = useState(null);
     const [draft, setDraft] = useState({ code: '', name: '' });
     const [newClass, setNewClass] = useState({ code: '', name: '' });
+    const [pendingId, setPendingId] = useState(null);
+
 
     useEffect(() => {
         if (!property_id) return;
@@ -68,13 +71,22 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     const cancel = () => {
       setEditRow(null);
     }
+    const cancelAdd = () => {
+      setNewClass({ code: '', name: '' });
+      onClose();
+    }
 
-    const deleteRow = (row) => {
+    const askDelete = (id) => setPendingId(id);
+
+    const closeDialog = () => !loading && setPendingId(null);
+
+    const confirmDelete = () => {
       client
-      .delete(`/properties/${encodeURIComponent(property_id)}/room-classes/${row.id}`)
+      .delete(`/properties/${encodeURIComponent(property_id)}/room-classes/${pendingId}`)
       .then(({ data }) => {
         if(data.ok) {
             setClasses(prev => prev.filter(p => p.id !== data.id));
+            setPendingId(null);
           }
         })
       .catch((e) => {setErr(e.message); })
@@ -83,21 +95,22 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
 
     const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(draft);
     client
     .post(`/properties/${encodeURIComponent(property_id)}/room-classes`, newClass)
     .then(({ data }) => { 
-                if(data) setClasses(prev => [data, ...prev]); 
-                console.log(data);
+                if(data) classes? setClasses(prev => [data, ...prev]) : setClasses([data]); 
             })
     .catch((e) => { setErr(e.message); })
-    .finally(() => { setLoading(false); });
+    .finally(() => { 
+      setLoading(false); 
+      setNewClass({ code: '', name: '' });
+    });
     onClose();
     }
 
     if (loading) return <>Загрузка…</>;
     if (err) return <>Ошибка: {err}</>;
-    if (!classes) return <>No Room Categories</>;
+    //if (!classes) return <>No Room Categories</>;
     return (
         <>
         {action === 'add_category' && (
@@ -122,7 +135,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
         </Grid>
         <Grid>
           <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 1 }}>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={cancelAdd}>Cancel</Button>
                 <Button variant="contained" type="submit">Create</Button>
           </Box>
         </Grid>
@@ -130,6 +143,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
       </Paper>
     </Box>
     )}
+    {classes?.length > 0 ? 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
         <TableHead>
@@ -158,7 +172,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
                   <IconButton
                     size="small"
                     aria-label={`edit ${c.name}`}
-                    onClick={() => deleteRow(c)}>
+                    onClick={() => askDelete(c.id)}>
                     <DeleteOutlineIcon fontSize="small" />
                   </IconButton>
                 </Box>
@@ -192,6 +206,15 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
         </TableBody>
       </Table>
     </TableContainer>
+    : <>No Room Categories</>}
+    <ConfirmDialog
+        open={Boolean(pendingId)}
+        title="Delete category?"
+        text="This action cannot be undone."
+        action_text="Delete"
+        onCancel={closeDialog}
+        onConfirm={confirmDelete}
+      />
         </>
     )
 };
