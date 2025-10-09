@@ -112,6 +112,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     //if (!classes) return <>No Room Categories</>;
     return (
         <>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>Specify all room types available in your property</Typography>
         {action === 'add_category' && (
     <Box component="form" onSubmit={handleSubmit} sx={{ p: 0 }} mb={3}>
       <Paper sx={{ p: 2 }}>
@@ -146,7 +147,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
         <TableHead>
-          <TableRow sx={{bgcolor: 'pink'}}>
+          <TableRow sx={{bgcolor: '#ebebeb'}}>
             <TableCell>Code</TableCell>
             <TableCell align="left">Title</TableCell>
             <TableCell align="right" width={80}>Actions</TableCell>

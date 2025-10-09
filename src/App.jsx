@@ -33,8 +33,8 @@ function App() {
           {can('hotel_any') && (
           <>
           <Route path="/properties" element={<Properties/>} />
-          <Route path="/properties/new" element={<Properties mode="create" />} />
-          <Route path="/properties/:id/edit" element={<PropertyForm mode="edit" />} />
+          {/* <Route path="/properties/new" element={<Properties mode="create" />} />
+          <Route path="/properties/:id/edit" element={<PropertyForm mode="edit" />} /> */}
           </>
           )}
           <Route path="/rooms" element={<Rooms/>} />

@@ -32,6 +32,7 @@ export default function PropertyUsers({property_id}) {
 
     return (
         <>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>Identify users who have access to this hotel</Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
         <TableHead>

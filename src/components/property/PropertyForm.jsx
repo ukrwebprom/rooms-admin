@@ -6,7 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useProperty } from "../../context/PropertyContext";
 import { useNavigate } from 'react-router-dom';
 
-export default function PropertyForm({id, mode}) {
+export default function PropertyForm({id, onCancel}) {
     const [hotelData, setHotelData] = useState();
     const [originalData, setOriginalData] = useState();
     const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ export default function PropertyForm({id, mode}) {
 
     const handleSubmit = async (e) => {
     e.preventDefault();
-    if(mode==='create') {
+    if(!id) {
         client.post('/properties/', hotelData)
         .then(({data}) => {
             updatePropertyList(data.id);
@@ -38,24 +38,18 @@ export default function PropertyForm({id, mode}) {
 
 
     useEffect(() => {
-    if (!id) return;
+    if (id)
+        {
         setLoading(true);
-        let cancelled = false;
         client
         .get(`/properties/${encodeURIComponent(id)}`)
-        .then(({ data }) => { if (!cancelled) 
+        .then(({ data }) => {  
             setHotelData(data); 
             setOriginalData(data);
         })
-        .catch((e) => { if (!cancelled) setErr(e.message); })
-        .finally(() => { if (!cancelled) setLoading(false); });
-
-      return () => { cancelled = true; };
-
-    }, [id]);
-
-    useEffect(() => {
-        if(mode === 'create') 
+        .catch((e) => { setErr(e.message); })
+        .finally(() => { setLoading(false); });
+    } else {
         setHotelData({
             name:'',
             country:'',
@@ -74,7 +68,9 @@ export default function PropertyForm({id, mode}) {
             phone:'',
             description:''
         });
-    }, [mode]);
+    }
+
+    }, [id]);
 
     const normalize = (o={}) => {
         const n = {};
@@ -141,8 +137,8 @@ export default function PropertyForm({id, mode}) {
 
             </Grid>
             <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 2 }}>
-                {mode==='create' && <Button  component={Link} to="/properties/">Cancel</Button>}
-                <Button variant="contained" type="submit" disabled={!isModified}>{mode==='create' ? 'Create' : 'Update'}</Button>
+                {!id && <Button onClick={onCancel}>Cancel</Button>}
+                <Button variant="contained" type="submit" disabled={!isModified}>{!id ? 'Create' : 'Update'}</Button>
             </Box>
         </Box>
     )

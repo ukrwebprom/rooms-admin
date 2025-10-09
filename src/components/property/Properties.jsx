@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import PropertyForm from "./PropertyForm";
 import PropertyUsers from "./PropertyUsers";
 import PropertyRoomClasses from "./PropertyRoomClasses";
+import PropertyLocation from "./PropertyLocation";
+import PropertyRooms from "./PropertyRooms";
 import {
     Box, Paper, Stack, Divider, Grid, TextField, MenuItem, Typography,
     Autocomplete, Button, Tabs, Tab, Toolbar
@@ -16,32 +18,36 @@ function CustomTabPanel(props) {
 
   return (
     <Box sx={{ p: 0 }}>
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        {value === index && <Box sx={{ p: 3, pt:0 }}>{children}</Box>}
     </Box>
   );
 }
 
 
 export default function Properties({mode}) {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [err, setErr] = useState("");
     const {currentPropertyId, setCurrentPropertyId, getPropertyName} = useProperty();
     const [currentTab, setCurrentTab] = useState(0);
     const [action, setAction] = useState(null);
+    const [isNew, setIsNew] = useState(null);
+    const { can } = useCan();
+    const {session} = useAuth();
+    const properties = session? session.properties : [];
+    // const [value, setValue] = useState(0);
+
+    // const handleChange = (event, newValue) => {
+        
+    //     setValue(newValue);
+    // };
     const handleChangeTab = (event, newValue) => {
         setAction(null);
         setCurrentTab(newValue);
     };
-    const { can } = useCan();
-    const {session} = useAuth();
-    const properties = session? session.properties : [];
-    const [value, setValue] = useState(0);
 
-    const handleChange = (event, newValue) => {
-        
-        setValue(newValue);
-    };
+    const handleCancelNew = () => setIsNew(false);
+    const handleNewHotel = () => {
+        setCurrentTab(0);
+        setIsNew(true);
+    }
 
     if (!properties) return (<p>No hotels</p>);
     return (
@@ -61,20 +67,20 @@ export default function Properties({mode}) {
         flexWrap: "wrap",
         }}>
         <Typography variant="h4" mb={2}>Hotels</Typography>
-        {(mode!='create' && can('hotel_create')) && <Button component={Link} to="/properties/new" size="large" variant="contained" color="primary">
+        {(!isNew && can('hotel_create')) && <Button onClick={handleNewHotel} size="large" variant="contained" color="primary">
             Add hotel
         </Button>}
         </Toolbar>
         
         <Box sx={{ p: 0 }}>
         <Paper elevation={1} sx={{ p: 0, borderRadius: 3 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1, borderBottom: 1, borderColor: 'divider', pr: 4 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1, pr: 4 }}>
         <Tabs value={currentTab} onChange={handleChangeTab} sx={{p:2, flexGrow: 1}}>
             <Tab label='Main' value={0}/>
-            <Tab label='Room categories' value={2} disabled={mode==='create'}/>
-            <Tab label='Locations / Floors' value={3} disabled={mode==='create'}/>
-            <Tab label='Rooms' value={4} disabled={mode==='create'}/>
-            {can('user_watch') && <Tab label='Users' value={1} disabled={mode==='create'}/>}
+            <Tab label='Room categories' value={2} disabled={isNew}/>
+            <Tab label='Locations / Floors' value={3} disabled={isNew}/>
+            <Tab label='Rooms' value={4} disabled={isNew}/>
+            {can('user_watch') && <Tab label='Users' value={1} disabled={isNew}/>}
         </Tabs>
         {currentTab === 2 && (
             <Button
@@ -97,16 +103,31 @@ export default function Properties({mode}) {
             >
             Add user
             </Button>  )}
+        {currentTab === 3 && (
+            <Button
+            variant="contained"
+            size="small"
+            startIcon={<AddIcon />}
+            onClick={() => setAction('add_location')}
+            sx={{ ml: 2 }}
+            >
+            Add location
+            </Button>  )}
         </Box>
         <CustomTabPanel value={currentTab} index={0}>
-            <PropertyForm id={mode==='create'? null : currentPropertyId} mode={mode}/>
+            <PropertyForm id={isNew? null : currentPropertyId} onCancel={handleCancelNew}/>
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={1}>
             <PropertyUsers property_id={currentPropertyId} />
         </CustomTabPanel>
         <CustomTabPanel value={currentTab} index={2}>
-            {/* {action === 'add_category' && <PropertyRoomClassesAdd property_id={currentPropertyId} onClose={() => setAction(null)}/>} */}
             <PropertyRoomClasses property_id={currentPropertyId} onClose={() => setAction(null)} action={action} />
+        </CustomTabPanel>
+        <CustomTabPanel value={currentTab} index={3}>
+            <PropertyLocation property_id={currentPropertyId} onClose={() => setAction(null)} action={action} />
+        </CustomTabPanel>
+        <CustomTabPanel value={currentTab} index={4}>
+            <PropertyRooms property_id={currentPropertyId} onClose={() => setAction(null)} action={action} />
         </CustomTabPanel>
         
         </Paper>
