@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import client from "../../api/client";
 import {Box, Typography, TextField, Grid, Button, Table, TableBody, TableCell, TableContainer,
-    TableHead, TableRow, Paper, Chip, Stack, List, ListItem, Divider, ListItemText, Tooltip, IconButton,
-    ListItemAvatar, ListItemButton, Avatar} from "@mui/material";
+    TableHead, TableRow, Paper, Chip} from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
@@ -109,7 +108,7 @@ export default function PropertyRoomClasses({property_id, onClose, action}) {
 
     if (loading) return <>Загрузка…</>;
     if (err) return <>Ошибка: {err}</>;
-    //if (!classes) return <>No Room Categories</>;
+
     return (
         <>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>Specify all room types available in your property</Typography>
