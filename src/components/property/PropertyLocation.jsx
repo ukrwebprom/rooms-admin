@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import client from "../../api/client";
-import {Box, Typography, TextField, Grid, Button, Table, TableBody, TableCell, TableContainer,
+import {Box, Typography, TextField, Grid, Button,  MenuItem, Table, TableBody, TableCell, TableContainer,
     TableHead, TableRow, Paper, Chip} from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import CheckIcon       from '@mui/icons-material/Check';
@@ -16,6 +16,14 @@ export default function PropertyLocation ({property_id, onClose, action}) {
   const [draft, setDraft] = useState({ code: '', kind: '', name: '', parent: '' });
   const [newLocation, setNewLocation] = useState({ code: '', kind: '', name: '', parent: '' });
   const [pendingId, setPendingId] = useState(null);
+  const KINDS = [
+  { value: 'FLOOR',    label: 'Floor' },
+  { value: 'BUILDING', label: 'Building' },
+  { value: 'WING',     label: 'Wing' },
+  { value: 'ZONE',     label: 'Zone' },
+  { value: 'AREA',     label: 'Area' },
+  { value: 'OTHER',    label: 'Other' },
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +40,17 @@ export default function PropertyLocation ({property_id, onClose, action}) {
     onClose();
     }
 
-  if (loading) return <>Загрузка…</>;
+  const cancelAdd = () => {
+      setNewLocation({ code: '', kind: '', name: '', parent: null });
+      onClose();
+    }
+
+ // if (loading) return <>Загрузка…</>;
   if (err) return <>Ошибка: {err}</>;
     return (
       <>
       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>Specify locations available in your property</Typography>
-      {action === 'add_category' && (
+      {action === 'add_location' && (
     <Box component="form" onSubmit={handleSubmit} sx={{ p: 0 }} mb={3}>
       <Paper sx={{ p: 2 }}>
       <Grid container spacing={2}>
@@ -49,7 +62,25 @@ export default function PropertyLocation ({property_id, onClose, action}) {
             fullWidth
             />
         </Grid>
-        <Grid size={6}>
+        <Grid size={2}>
+          <TextField
+            label="Kind"
+            select
+            fullWidth
+            required
+            value={newLocation.kind}
+            onChange={(e) => setNewLocation({ ...newLocation, kind: e.target.value })}
+//            helperText="Choose location type"
+          >
+          {KINDS.map(k => (
+          <MenuItem key={k.value} value={k.value}>
+            {k.label}
+          </MenuItem>
+          ))}
+          </TextField>
+
+        </Grid>
+        <Grid size={3}>
           <TextField
             label="Title"
             value= {newLocation.name}
