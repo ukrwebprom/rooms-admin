@@ -7,6 +7,7 @@ import CheckIcon       from '@mui/icons-material/Check';
 import CloseIcon       from '@mui/icons-material/Close';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { ConfirmDialog } from "../ConfirmDialog";
+import {sortTreePreorder} from './SortLocations';
 
 export default function PropertyLocation ({property_id, onClose, action}) {
   const [location, setLocation] = useState(null);
@@ -24,9 +25,46 @@ export default function PropertyLocation ({property_id, onClose, action}) {
   { value: 'AREA',     label: 'Area' },
   { value: 'OTHER',    label: 'Other' },
   ];
+
+  const isModified = () => {
+    if(!editRow) return false;
+    if(draft.code.trim().toUpperCase() === classes.find((e) => e.id===editRow).code &&
+      draft.name.trim() === classes.find((e) => e.id===editRow).name
+    ) return false;
+    return true;
+  }
   
+
+  const save = () => {
+    console.log('id:', editRow, "data:", draft);
+    // PATCH /properties/:propertyId/room-classes/:classId
+    client
+    .patch(`/properties/${encodeURIComponent(property_id)}/room-classes/${editRow}`, draft )
+    .then(({ data }) => {
+      if(data) {
+        setLocation(prev =>
+          prev.map(item =>
+            item.id === editRow ? { ...item, code: data.code, name:data.name } : item
+          )
+        );
+        }
+      })
+    .catch((e) => {setErr(e.message); })
+    .finally(() => {
+      setLoading(false); 
+      setEditRow(null);
+    });
+  }
+
+  const cancel = () => {
+    setEditRow(null);
+  }
   
-  
+  const arrangeLocations = () => {
+    if(!location) return []
+    return location.filter((l) => l.parent_id === null);
+  };
+
   const startEdit = (row) => {
     setEditRow(row.id);
     setDraft({ code: row.code ?? '', name: row.name ?? '' });
@@ -66,8 +104,9 @@ export default function PropertyLocation ({property_id, onClose, action}) {
         .get(`/properties/${encodeURIComponent(property_id)}/locations`)
         .then(({ data }) => { if (!cancelled) {
         data.length > 0 ? setLocation(data) : setLocation(null); 
-        console.log(data);}
-        })
+        // console.log('Raw data', data);
+        // console.log('Sorted data', sortTreePreorder(data, {idKey: 'id', parentKey: 'parent_id'}))
+        }})
         .catch((e) => { if (!cancelled) setErr(e.message); })
         .finally(() => { if (!cancelled) setLoading(false); });
       return () => { cancelled = true; };
@@ -79,6 +118,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
     return (
       <>
       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>Specify locations available in your property</Typography>
+ {/* -------------------------------------------------------------------- Create a New Location ------------------------------------- */}
       {action === 'add_location' && (
     <Box component="form" onSubmit={handleSubmit} sx={{ p: 0 }} mb={3}>
       <Paper sx={{ p: 2 }}>
@@ -152,7 +192,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
       </Paper>
     </Box>
     )}
-
+ {/* -------------------------------------------------------------------- end of New Location ------------------------------------- */}
     {location?.length > 0 ? 
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="a dense table">
@@ -166,10 +206,11 @@ export default function PropertyLocation ({property_id, onClose, action}) {
           </TableRow>
         </TableHead>
         <TableBody>
-            {location.map((c) => (
+            {sortTreePreorder(location, {idKey: 'id', parentKey: 'parent_id'}).map((c) => (
                 <TableRow
               key={c.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 }, bgcolor: c.id != editRow? 'white':'grey.50' }}>
+ {/* -------------------------------------------------------------------- Show Location ------------------------------------- */}
                 {c.id != editRow? (<>
                 <TableCell align="left"><Chip label={c.code} size="small" /></TableCell>
                 <TableCell align="left">{c.kind}</TableCell>
@@ -190,9 +231,10 @@ export default function PropertyLocation ({property_id, onClose, action}) {
                     <DeleteOutlineIcon fontSize="small" />
                   </IconButton>
                 </Box>
-              </TableCell></>
-              ):(<>
-                <TableCell align="left">
+              </TableCell></>)
+
+              :(<>Edit
+                {/* <TableCell align="left">
                     <TextField
                       size="small"
                       value={draft.code}
@@ -212,7 +254,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
                       <IconButton onClick={save} disabled={!isModified()} ><CheckIcon/></IconButton>
                       <IconButton onClick={cancel}><CloseIcon/></IconButton>
                     </Box>
-                </TableCell>
+                </TableCell> */}
                 </>
               )}
             </TableRow>
