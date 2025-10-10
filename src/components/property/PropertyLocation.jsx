@@ -28,8 +28,11 @@ export default function PropertyLocation ({property_id, onClose, action}) {
 
   const isModified = () => {
     if(!editRow) return false;
-    if(draft.code.trim().toUpperCase() === classes.find((e) => e.id===editRow).code &&
-      draft.name.trim() === classes.find((e) => e.id===editRow).name
+    const etalon = location.find((e) => e.id===editRow);
+    if(draft.code.trim().toUpperCase() === etalon.code &&
+      draft.name.trim() === etalon.name &&
+      draft.kind === etalon.kind &&
+      draft.parent_id === etalon.parent_id
     ) return false;
     return true;
   }
@@ -39,14 +42,12 @@ export default function PropertyLocation ({property_id, onClose, action}) {
     console.log('id:', editRow, "data:", draft);
     // PATCH /properties/:propertyId/room-classes/:classId
     client
-    .patch(`/properties/${encodeURIComponent(property_id)}/room-classes/${editRow}`, draft )
+    .patch(`/properties/${encodeURIComponent(property_id)}/locations/${editRow}`, draft )
     .then(({ data }) => {
       if(data) {
         setLocation(prev =>
           prev.map(item =>
-            item.id === editRow ? { ...item, code: data.code, name:data.name } : item
-          )
-        );
+            item.id === editRow ? data : item));
         }
       })
     .catch((e) => {setErr(e.message); })
@@ -59,15 +60,10 @@ export default function PropertyLocation ({property_id, onClose, action}) {
   const cancel = () => {
     setEditRow(null);
   }
-  
-  const arrangeLocations = () => {
-    if(!location) return []
-    return location.filter((l) => l.parent_id === null);
-  };
 
   const startEdit = (row) => {
     setEditRow(row.id);
-    setDraft({ code: row.code ?? '', name: row.name ?? '' });
+    setDraft(row);
   };
 
   const askDelete = (id) => setPendingId(id);
@@ -127,7 +123,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
           <TextField
             label="Code"
             value= {newLocation.code}
-            onChange={e => setNewLocation({ ...newLocation, code: e.target.value })}
+            onChange={e => setNewLocation(n => ({ ...n, code: e.target.value }))}
             fullWidth
             />
         </Grid>
@@ -138,7 +134,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
             fullWidth
             required
             value={newLocation.kind}
-            onChange={(e) => setNewLocation({ ...newLocation, kind: e.target.value })}>
+            onChange={(e) => setNewLocation(n => ({ ...n, kind: e.target.value }))}>
           {KINDS.map(k => (
           <MenuItem key={k.value} value={k.value}>
             {k.label}
@@ -150,7 +146,7 @@ export default function PropertyLocation ({property_id, onClose, action}) {
           <TextField
             label="Title"
             value= {newLocation.name}
-            onChange={e => setNewLocation({ ...newLocation, name: e.target.value })}
+            onChange={e => setNewLocation(n => ({ ...n, name: e.target.value }))}
             fullWidth
             />
         </Grid>
@@ -194,8 +190,16 @@ export default function PropertyLocation ({property_id, onClose, action}) {
     )}
  {/* -------------------------------------------------------------------- end of New Location ------------------------------------- */}
     {location?.length > 0 ? 
+      <>
       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="a dense table">
+      <Table sx={{ tableLayout: 'fixed', width: '100%' }} aria-label="a dense table">
+        <colgroup>
+          <col style={{ width: '15%' }} />
+          <col style={{ width: '10%' }} />
+          <col style={{ width: '40%' }} />
+          <col style={{ width: '20%' }} />
+          <col style={{ width: '10%'  }} />
+        </colgroup>
         <TableHead>
           <TableRow sx={{bgcolor: '#ebebeb'}}>
             <TableCell>Code</TableCell>
@@ -233,13 +237,28 @@ export default function PropertyLocation ({property_id, onClose, action}) {
                 </Box>
               </TableCell></>)
 
-              :(<>Edit
-                {/* <TableCell align="left">
+              :(<>
+                <TableCell align="left">
                     <TextField
                       size="small"
                       value={draft.code}
                       onChange={e => setDraft(d => ({ ...d, code: e.target.value }))}
                     />
+                </TableCell>
+                <TableCell align="left">
+                  <TextField
+                    size="small"
+                    select
+                    fullWidth
+                    required
+                    value={draft.kind}
+                    onChange={(e) => setDraft(n => ({ ...n, kind: e.target.value }))}>
+                    {KINDS.map(k => (
+                      <MenuItem key={k.value} value={k.value}>
+                        {k.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </TableCell>
                 <TableCell align="left">
                     <TextField
@@ -249,12 +268,39 @@ export default function PropertyLocation ({property_id, onClose, action}) {
                      fullWidth
                     />
                 </TableCell>
+                <TableCell align="left">
+                  <TextField
+                    size="small"
+                    select
+                    fullWidth
+                    value={draft.parent_id}
+                    onChange={(e) => setDraft(l => ({ ...l, parent_id: e.target.value }))}
+                    InputLabelProps={{ shrink: true }}
+                    slotProps={{
+                      select: {
+                      displayEmpty: true,
+                      renderValue: (v) => {
+                        if (!v) return <em>No parent</em>;
+                        const item = getParentName(v);
+                        return item ? item : '';
+                      },
+                    },
+                    }}
+                  >
+                  <MenuItem value=""><em>No parent</em></MenuItem>
+                    {location.map(k => (
+                    <MenuItem key={k.id} value={k.id}>
+                      {k.name}
+                    </MenuItem>
+                    ))}
+                  </TextField>
+                </TableCell>
                 <TableCell align="right">
                     <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
                       <IconButton onClick={save} disabled={!isModified()} ><CheckIcon/></IconButton>
                       <IconButton onClick={cancel}><CloseIcon/></IconButton>
                     </Box>
-                </TableCell> */}
+                </TableCell>
                 </>
               )}
             </TableRow>
@@ -262,6 +308,8 @@ export default function PropertyLocation ({property_id, onClose, action}) {
         </TableBody>
       </Table>
     </TableContainer>
+    {!err && err}
+    </>
     : <>No Locations</>}
       </>
     )
