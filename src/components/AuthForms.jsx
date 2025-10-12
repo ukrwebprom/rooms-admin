@@ -5,7 +5,6 @@ import { Paper, Typography, Link } from "@mui/material";
 
 export default function AuthForm() {
     const [action, setAction] = useState('Login');
-
     return (
         <Paper sx={{ p: 4, width: 380 }}>
 

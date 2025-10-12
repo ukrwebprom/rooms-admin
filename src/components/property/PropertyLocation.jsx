@@ -68,17 +68,30 @@ export default function PropertyLocation ({property_id, onClose, action}) {
 
   const askDelete = (id) => setPendingId(id);
 
+  const closeDialog = () => !loading && setPendingId(null);
+  
+  const confirmDelete = () => {
+    client
+    .delete(`/properties/${encodeURIComponent(property_id)}/locations/${pendingId}`)
+    .then(() => {
+        setLocation(prev => prev.filter(p => p.id !== pendingId));
+        setPendingId(null);
+    })
+    .catch((e) => {setErr(e.message); })
+    .finally(() => {setLoading(false); });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     client
-    .post(`/properties/${encodeURIComponent(property_id)}/room-classes`, newClass)
+    .post(`/properties/${encodeURIComponent(property_id)}/locations`, newLocation)
     .then(({ data }) => { 
-                if(data) classes? setClasses(prev => [data, ...prev]) : setClasses([data]); 
+                if(data) location? setLocation(prev => [data, ...prev]) : setLocation([data]); 
             })
     .catch((e) => { setErr(e.message); })
     .finally(() => { 
       setLoading(false); 
-      setNewClass({ code: '', name: '' });
+      setNewLocation({ code: '', kind: '', name: '', parent_id: '' });
     });
     onClose();
     }
@@ -311,6 +324,14 @@ export default function PropertyLocation ({property_id, onClose, action}) {
     {!err && err}
     </>
     : <>No Locations</>}
+        <ConfirmDialog
+        open={Boolean(pendingId)}
+        title="Delete location?"
+        text="This action cannot be undone."
+        action_text="Delete"
+        onCancel={closeDialog}
+        onConfirm={confirmDelete}
+      />
       </>
     )
 }

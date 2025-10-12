@@ -16,7 +16,7 @@ function Navbar() {
     const properties = session?.properties ?? [];
     
   return (
-    <AppBar position="static" sx={{ bgcolor: "#fff", color: "#333", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+    <AppBar position="fixed" sx={{ bgcolor: "#fff", color: "#333", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         <Box
             component="img"

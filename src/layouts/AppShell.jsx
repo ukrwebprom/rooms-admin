@@ -23,7 +23,7 @@ export default function AppShell() {
           <Footer />
           </Drawer>
 
-          <Box component="main" sx={{ flex: 1, p: 3, backgroundColor: "#f9fafb" }}>
+          <Box component="main" sx={{ flex: 1, p: 3, mt:5, backgroundColor: "#f9fafb" }}>
             <Outlet />
           </Box>
 

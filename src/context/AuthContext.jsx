@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setAuthReady(true); // токена нет — заканчиваем инициализацию
+      setAuthReady(false); // токена нет — заканчиваем инициализацию
       return;
     }
     (async () => {

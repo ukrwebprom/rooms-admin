@@ -29,7 +29,7 @@ client.interceptors.response.use(
     const original = err.config;
     if (err.response?.status !== 401 || original._retry) throw err;
 
-    refreshing = refreshing || axios.post("/auth/refresh", {}, { withCredentials: true })
+    refreshing = refreshing || client.post("/auth/refresh", {}, { withCredentials: true })
     .then(res => {
     localStorage.setItem("token", res.data.token);
     return res.data.token;
