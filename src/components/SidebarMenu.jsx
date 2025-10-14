@@ -1,6 +1,7 @@
 
+import * as React from 'react';
 import {
-  List, ListItemButton, ListItemIcon, ListItemText, Box
+  List, ListItemButton, ListItemIcon, ListItemText, Box, Collapse
 } from "@mui/material";
 import {
   HomeOutlined,
@@ -9,8 +10,10 @@ import {
   CalendarMonthOutlined,
   PeopleAltOutlined,
   BarChartOutlined,
-  ManageAccountsOutlined
+  ManageAccountsOutlined,
+  RoomPreferencesOutlined
 } from "@mui/icons-material";
+import RoomPreferencesOutlinedIcon from '@mui/icons-material/RoomPreferencesOutlined';
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import {useCan }from '../api/can';
 
@@ -19,15 +22,16 @@ import {useCan }from '../api/can';
 export default function SidebarMenu() {
     const { pathname } = useLocation();
     const { can } = useCan();
+    const [openSettings, setOpenSettings] = React.useState(false);
 
 const items = [
   { label: "Dashboard",   to: "/dashboard",   icon: <HomeOutlined />, enabled:true },
-  { label: "Hotels",     to: "/properties",  icon: <ApartmentOutlined />, enabled: can('hotel_any') },
+  // { label: "Hotels",     to: "/properties",  icon: <ApartmentOutlined />, enabled: can('hotel_any') },
   { label: "Rooms",    to: "/rooms",       icon: <BedOutlined />, enabled:true },
   { label: "Bookings", to: "/bookings", icon: <CalendarMonthOutlined />, enabled:true },
   { label: "Clients",   to: "/clients",   icon: <PeopleAltOutlined />, enabled:true },
   { label: "Reports",    to: "/reports",     icon: <BarChartOutlined />, enabled:true },
-  { label: "Users",    to: "/users",     icon: <ManageAccountsOutlined />, enabled: can('user_watch') },
+  // { label: "Users",    to: "/users",     icon: <ManageAccountsOutlined />, enabled: can('user_watch') },
 ];
 
     return(
@@ -59,6 +63,33 @@ const items = [
             </ListItemButton>
           : '');
         })}
+        <ListItemButton onClick={() => setOpenSettings((v) => !v)} sx={{ borderRadius: 1 }}>
+        <ListItemIcon sx={{ minWidth: 40, color: "text.primary" }}><RoomPreferencesOutlined /></ListItemIcon>
+        <ListItemText primary="Settings" primaryTypographyProps={{ fontWeight: 500 }}/>
+        {/* {openSettings ? <ExpandLess /> : <ExpandMore />} */}
+        </ListItemButton>
+
+        <Collapse in={openSettings} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton
+            component={RouterLink}
+            to="/properties"
+            sx={{ pl: 6 }}
+          >
+            {/* <ListItemIcon><ApartmentOutlined /></ListItemIcon> */}
+            <ListItemText primary="Hotels" />
+          </ListItemButton>
+
+          <ListItemButton
+            component={RouterLink}
+            to="/users"
+            sx={{ pl: 6 }}
+          >
+            {/* <ListItemIcon><ManageAccountsOutlined /></ListItemIcon> */}
+            <ListItemText primary="Users" />
+          </ListItemButton>
+        </List>
+        </Collapse>
       </List>
     </Box>
     )
