@@ -1,10 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import LoginForm from "./Login";
 import RegisterForm from "./Register";
+import { useAuth } from "../context/AuthContext";
 import { Paper, Typography, Link } from "@mui/material";
 
 export default function AuthForm() {
     const [action, setAction] = useState('Login');
+    const {loginWithGoogle} = useAuth();
+
+
+        const googleBtnRef = useRef(null);
+        const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    
+          // Инициализируем Google Identity Services
+      useEffect(() => {
+        if (!window.google || !GOOGLE_CLIENT_ID || !googleBtnRef.current) return;
+    
+        /* global google */
+        google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: async (response) => {
+            try {
+              const data = await loginWithGoogle(response.credential); // ID-token
+              if (data?.error) setError(data.error);
+            } catch (e) {
+              console.error(e);
+              setError("Google sign-in failed");
+            }
+          },
+          // Доп. защита от replay-атак (по желанию)
+          nonce: crypto.randomUUID(),
+        });
+    
+        google.accounts.id.renderButton(googleBtnRef.current, {
+          theme: "outline",
+          size: "large",
+          type: "standard",
+          shape: "pill",
+          text: "signin_with", // автолокализация
+        });
+    
+        // Опционально: One Tap (если захочешь)
+        // google.accounts.id.prompt();
+      }, [GOOGLE_CLIENT_ID, loginWithGoogle]);
+
     return (
         <Paper sx={{ p: 4, width: 380 }}>
 
@@ -43,6 +82,8 @@ export default function AuthForm() {
             </>
         )}
 
+      {/* сюда отрендерится кнопка Google */}
+      <div ref={googleBtnRef} style={{ display: "flex", justifyContent: "center", marginTop:"15px" }} />
         </Paper>
     )
 }

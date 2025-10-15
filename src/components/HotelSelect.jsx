@@ -33,7 +33,7 @@ export default function HotelSelect() {
 
         {hotels !=null && (
 
-    <FormControl variant="outlined" sx={{ minWidth: 220 }}>
+    <FormControl variant="standard" sx={{ minWidth: 220 }}>
       {/* <InputLabel id="hotel-select-label">Отель</InputLabel> */}
       <Select
         value={currentPropertyId}

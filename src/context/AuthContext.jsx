@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setAuthReady(false); // токена нет — заканчиваем инициализацию
+      setAuthReady(true); // токена нет — заканчиваем инициализацию
       return;
     }
     (async () => {
@@ -81,6 +81,24 @@ export function AuthProvider({ children }) {
     }
   }
 
+  const loginWithGoogle = async (idToken) => {
+    const { data } = await client.post(
+      "/auth/google",
+      { id_token: idToken },
+      { withCredentials: true }
+    );
+    console.log(data);
+    if (data.token) setToken(data.token); 
+    const newSession = {
+        user: data.user,
+        abilities: data.abilities || [],
+        properties: data.properties || [],
+      };
+    setSession(data);
+    setAuthReady(true);
+    return data;
+  };
+
   const logout = async() => {
     const { killtoken } = await client.post("/auth/logout");
     console.log("killtoken: ", killtoken);
@@ -109,7 +127,7 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session,
     loading, error,
-    login, logout, updatePropertyList,
+    login, logout, updatePropertyList, loginWithGoogle,
     isAuthenticated, authReady
   }), [session, loading, error]);
 

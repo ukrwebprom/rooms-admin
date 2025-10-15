@@ -6,7 +6,7 @@ import HotelSelect from "./HotelSelect";
 import { AppBar, Toolbar, Typography, Button, IconButton, Box, Avatar, Menu, MenuItem } from "@mui/material";
 
 function Navbar() {
-    const {user, logout, isAuthenticated, session} = useAuth();
+    const {logout, isAuthenticated, session} = useAuth();
     const {currentPropertyId, setCurrentPropertyId} = useProperty();
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -14,6 +14,8 @@ function Navbar() {
     const handleCloseMenu = () => setAnchorEl(null);
 
     const properties = session?.properties ?? [];
+
+    const user = session.user;
     
   return (
     <AppBar position="fixed" sx={{ bgcolor: "#fff", color: "#333", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -29,7 +31,7 @@ function Navbar() {
         <Box sx={{ flexGrow: 1 }} />
         
         <IconButton  onClick={handleOpenMenu} sx={{ ml: 2 }}>
-          <Avatar alt={user?.name} src={user?.avatarUrl || ""} />
+          <Avatar alt={user?.name} src={user?.picture || ""} />
         </IconButton>
 
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}
