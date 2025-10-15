@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import {
-  List, ListItemButton, ListItemIcon, ListItemText, Box, Collapse
+  List, ListItemButton, ListItemIcon, ListItemText, Box, Collapse, Divider
 } from "@mui/material";
 import {
   HomeOutlined,
@@ -63,6 +63,7 @@ const items = [
             </ListItemButton>
           : '');
         })}
+        <Divider textAlign="left">Settings</Divider>
         <ListItemButton onClick={() => setOpenSettings((v) => !v)} sx={{ borderRadius: 1 }}>
         <ListItemIcon sx={{ minWidth: 40, color: "text.primary" }}><RoomPreferencesOutlined /></ListItemIcon>
         <ListItemText primary="Settings" primaryTypographyProps={{ fontWeight: 500 }}/>
@@ -76,8 +77,8 @@ const items = [
             to="/properties"
             sx={{ pl: 6 }}
           >
-            {/* <ListItemIcon><ApartmentOutlined /></ListItemIcon> */}
-            <ListItemText primary="Hotels" />
+            {/* <ListItemIcon sx={{ minWidth: 40, color: "text.primary" }}><ApartmentOutlined /></ListItemIcon> */}
+            <ListItemText primary="Property"  primaryTypographyProps={{ fontWeight: 500 }}/>
           </ListItemButton>
 
           <ListItemButton
@@ -85,8 +86,8 @@ const items = [
             to="/users"
             sx={{ pl: 6 }}
           >
-            {/* <ListItemIcon><ManageAccountsOutlined /></ListItemIcon> */}
-            <ListItemText primary="Users" />
+            {/* <ListItemIcon sx={{ minWidth: 40, color: "text.primary" }}><ManageAccountsOutlined /></ListItemIcon> */}
+            <ListItemText primary="Users"  primaryTypographyProps={{ fontWeight: 500 }}/>
           </ListItemButton>
         </List>
         </Collapse>
