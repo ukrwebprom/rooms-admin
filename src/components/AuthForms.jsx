@@ -11,7 +11,7 @@ export default function AuthForm() {
 
         const googleBtnRef = useRef(null);
         const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-    
+      console.log("GOOGLE_CLIENT_ID:", GOOGLE_CLIENT_ID);
           // Инициализируем Google Identity Services
       useEffect(() => {
         if (!window.google || !GOOGLE_CLIENT_ID || !googleBtnRef.current) return;
