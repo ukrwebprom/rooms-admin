@@ -18,20 +18,26 @@ function Navbar() {
     const user = session.user;
     
   return (
-    <AppBar position="fixed" sx={{ bgcolor: "#fff", color: "#333", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-      <Toolbar>
-        <Box
-            component="img"
-            src={logo}
-            alt="Rooms Admin"
-            sx={{ height: 32, mr: 4 }}
-          />
-        <HotelSelect />
-        
-        <Box sx={{ flexGrow: 1 }} />
+      <Box sx={{ 
+        display: 'flex', 
+        alignItems: "center",
+        justifyContent: "space-between", 
+        p: 0, 
+        mb: 2 }}>
+        <HotelSelect sx={{ flexGrow: 1 }}/>
         
         <IconButton  onClick={handleOpenMenu} sx={{ ml: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ textAlign: 'right', lineHeight: 0.5 }}>
+              <Typography variant="subtitle2" fontWeight={600} noWrap>
+                {user?.name || 'User'}
+              </Typography>
+              <Typography variant="caption" color="text.secondary" noWrap>
+                {user?.role || 'Guest'}
+              </Typography>
+            </Box>
           <Avatar alt={user?.name} src={user?.picture || ""} />
+          </Box>
         </IconButton>
 
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}
@@ -47,8 +53,7 @@ function Navbar() {
                 Logout
               </MenuItem>
         </Menu>
-      </Toolbar>
-    </AppBar>
+      </Box>
   );
 }
 

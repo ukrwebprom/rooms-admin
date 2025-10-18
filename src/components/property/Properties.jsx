@@ -57,7 +57,7 @@ export default function Properties({mode}) {
         disableGutters
         sx={{
         mb: 5,
-        mt: 2,
+        mt: 0,
         px: 0,
         minHeight: 48,
         display: "flex",
