@@ -13,6 +13,8 @@ import {
     Autocomplete, Button, Tabs, Tab, Toolbar
   } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import HotelSelect from "../HotelSelect";
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -66,7 +68,8 @@ export default function Properties({mode}) {
         gap: 2,
         flexWrap: "wrap",
         }}>
-        <Typography variant="h4" mb={2}>Hotels</Typography>
+        
+        <HotelSelect />
         {(!isNew && can('hotel_create')) && <Button onClick={handleNewHotel} size="large" variant="contained" color="primary">
             Add hotel
         </Button>}

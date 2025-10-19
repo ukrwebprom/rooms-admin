@@ -1,9 +1,21 @@
 import { useState } from "react";
+import { useLocation, useParams, useMatch, NavLink } from 'react-router-dom';
 import logo from "../assets/rooms.svg";
 import { useAuth } from "../context/AuthContext";
 import { useProperty } from "../context/PropertyContext";
 import HotelSelect from "./HotelSelect";
 import { AppBar, Toolbar, Typography, Button, IconButton, Box, Avatar, Menu, MenuItem } from "@mui/material";
+import Dashboard from "./Dashboard";
+
+const Titles = {
+  properties: 'Hotels',
+  users: 'Users', 
+  dashboard: 'Dashboard'
+}
+const CurrentLocation = () => {
+  const { pathname } = useLocation();
+  return Titles[pathname.slice(1)];
+}
 
 function Navbar() {
     const {logout, isAuthenticated, session} = useAuth();
@@ -24,7 +36,8 @@ function Navbar() {
         justifyContent: "space-between", 
         p: 0, 
         mb: 2 }}>
-        <HotelSelect sx={{ flexGrow: 1 }}/>
+        <Typography variant="h4" mb={2} sx={{ flexGrow: 1 }}>{CurrentLocation()}</Typography>
+        {/* <HotelSelect sx={{ flexGrow: 1 }}/> */}
         
         <IconButton  onClick={handleOpenMenu} sx={{ ml: 2 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

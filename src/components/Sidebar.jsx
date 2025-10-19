@@ -7,6 +7,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
+import BedIcon from '@mui/icons-material/Bed';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import {useCan }from '../api/can';
 
@@ -87,21 +89,28 @@ export default function Sidebar({ onNavigate }) {
           </ListItemButton>
         </Tooltip>
 
-        {can('hotel_any') && <Tooltip title={!open ? 'Hotels' : ''} placement="right">
+        <Tooltip title={!open ? 'Dashboard' : ''} placement="right">
+          <ListItemButton component={RouterLink} to={'/rooms'}>
+            <ListItemIcon><MeetingRoomIcon /></ListItemIcon>
+            <ListItemText primary="Rooms" />
+          </ListItemButton>
+        </Tooltip>
+
+        {can('hotel_watch') && <Tooltip title={!open ? 'Hotels' : ''} placement="right">
           <ListItemButton component={RouterLink} to={'/properties'}>
             <ListItemIcon><ApartmentIcon /></ListItemIcon>
             <ListItemText primary="Hotels" />
           </ListItemButton>
         </Tooltip>}
 
-        <Tooltip title={!open ? 'Users' : ''} placement="right">
-          <ListItemButton onClick={() => onNavigate && onNavigate('users')}>
+        {can('user_watch') && <Tooltip title={!open ? 'Users' : ''} placement="right">
+          <ListItemButton component={RouterLink} to={'/users'}>
             <ListItemIcon><PeopleIcon /></ListItemIcon>
             <ListItemText primary="Users" />
           </ListItemButton>
-        </Tooltip>
+        </Tooltip>}
 
-        <Divider sx={{ my: 1 }} />
+        <Divider sx={{ my: 1, bgcolor: 'rgba(255,255,255,0.7)' }} />
 
         <Tooltip title={!open ? 'Settings' : ''} placement="right">
           <ListItemButton onClick={() => onNavigate && onNavigate('settings')}>
